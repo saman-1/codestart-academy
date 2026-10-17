@@ -102,13 +102,16 @@ body {
 }
 
 .hero-content {
-    flex: 2;
+    flex: 1.2;
 }
 
 .hero-code {
-    background-color: #2a3749;
-    border-radius: var(--radius-md);
-    padding: var(--space-md) var(--space-lg);
+    background-color: #111827;
+    border: 1px solid #273449;
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(17, 24, 39, 0.15);
+    direction: ltr;
+    padding: var(--space-lg);
     min-width: 0;
     min-height: 300px;
     flex: 1;
@@ -153,17 +156,20 @@ body {
 }
 
 .hero-title {
-    font-size: 32px;
-    line-height: 1.5;
+    font-size: 38px;
+    line-height: 1.7;
+    font-weight: 800;
     margin-top: var(--space-md);
     margin-bottom: var(--space-md);
+    color: var(--text-color);
 }
 
 .hero-description {
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: var(--space-md);
+    font-size: 17px;
+    line-height: 2;
+    margin-bottom: var(--space-lg);
     color: #555;
+    max-width: 520px;
 }
 
 .hero-btn {
