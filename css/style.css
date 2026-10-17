@@ -1,0 +1,189 @@
+@import url(./fontiran.css);
+
+/* Design Tokens */
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --text-color: #1f2937;
+    --bg-color: #ffffff;
+    --border-color: #e5e7eb;
+
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+
+    --radius-md: 8px;
+
+    --font-page: IRANSansX, Tahoma, Sans-serif;
+
+}
+
+/* Reset */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-page);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+}
+
+.navbar-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    gap: var(--space-lg);
+}
+
+.link-item {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.btn {
+    border: none;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.signin-signup {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.signup-btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.signup-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.signin-btn {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+}
+
+.logo-image {
+    max-width: 100px;
+    height: auto;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-md);
+    max-width: 1200px;
+    margin-inline: auto;
+}
+
+.hero-content {
+    flex: 2;
+}
+
+.hero-code {
+    background-color: #2a3749;
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    min-width: 0;
+    min-height: 300px;
+    flex: 1;
+}
+
+.code-header {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.code-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.code-dot:first-child {
+    background-color: rgb(247, 72, 72);
+}
+
+.code-dot:nth-child(2) {
+    background-color: rgb(248, 174, 37);
+}
+
+.code-dot:last-child {
+    background-color: rgb(2, 192, 2);
+}
+
+.hero-code pre {
+    color: #f09191;
+    font-size: 16px;
+    margin: 0;
+    font-family: consolas, monospace;
+    text-align: left;
+    white-space: pre;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.hero-code pre::-webkit-scrollbar {
+    display: none;
+}
+
+.hero-title {
+    font-size: 32px;
+    line-height: 1.5;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.hero-description {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: var(--space-md);
+    color: #555;
+}
+
+.hero-btn {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.hero-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+    .hero-title {
+        font-size: 24px;
+    }
+    .hero-code {
+        width: 100%;
+    }
+    .navbar {
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+    .navbar-list {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+}
