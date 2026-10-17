@@ -34,6 +34,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin-inline: auto;
     padding: var(--space-md) var(--space-lg);
 }
 
