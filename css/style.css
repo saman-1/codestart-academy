@@ -176,6 +176,13 @@ body {
     background-color: var(--primary-dark);
 }
 
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
