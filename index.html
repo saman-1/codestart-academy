@@ -266,10 +266,98 @@
     </section>
 
     <!-- Contact Us Section -->
-     <section class="contact-us" id="contact-us"></section>
+     <section class="contact-us" id="contact-us">
+        <div class="section-heading">
+            <h2 class="section-title">با ما در ارتباط باش</h2>
+            <p class="section-description">
+                سوالی داری؟ خوشحال می‌شیم ازت بشنویم.
+            </p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 class="contact-info-title">راه‌های ارتباطی</h3>
+
+                <p class="contact-info-description">
+                    اگر درباره دوره‌ها یا مسیر یادگیری سوالی داری، از طریق فرم
+                    زیر با ما در ارتباط باش.
+                </p>
+
+                <div class="contact-item">
+                    <span class="contact-item-label">ایمیل</span>
+                    <span class="contact-item-value">hello@codestart.academy</span>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-item-label">ساعات پاسخ‌گویی</span>
+                    <span class="contact-item-value">شنبه تا پنجشنبه، ۹ تا ۱۷</span>
+                </div>
+            </div>
+
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">نام و نام خانوادگی</label>
+                    <input
+                        type="text"
+                        id="contact-name"
+                        name="name"
+                        placeholder="نام خودت رو وارد کن"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-email">ایمیل</label>
+                    <input
+                        type="email"
+                        id="contact-email"
+                        name="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-message">پیام</label>
+                    <textarea
+                        id="contact-message"
+                        name="message"
+                        rows="5"
+                        placeholder="پیامت رو اینجا بنویس..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="btn contact-btn">
+                    ارسال پیام
+                </button>
+            </form>
+        </div>
+     </section>
 
     <!-- Footer Section -->
-    <footer class="footer"></footer>
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">CodeStart Academy</a>
+                <p class="footer-description">
+                    یادگیری برنامه‌نویسی، قدم‌به‌قدم تا ساختن آینده‌ای بهتر.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="footer-heading">دسترسی سریع</h3>
+                <a href="#features">ویژگی‌ها</a>
+                <a href="#courses">دوره‌ها</a>
+                <a href="#about-us">درباره ما</a>
+                <a href="#contact-us">تماس با ما</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 CodeStart Academy. تمام حقوق محفوظ است.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
