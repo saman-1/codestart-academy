@@ -210,22 +210,26 @@ textarea {
 .code-editor {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 12px;
   overflow-x: auto;
+  padding-top: 4px;
+  padding-bottom: var(--space-md);
 }
 
 .code-line {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 16px;
+  min-height: 24px;
   white-space: pre;
   font-family: Consolas, monospace;
   font-size: 14px;
+  line-height: 1.8;
 }
 
 .line-number {
   color: #64748b;
-  min-width: 16px;
+  min-width: 20px;
   text-align: right;
   user-select: none;
 }
@@ -235,8 +239,17 @@ textarea {
   font-family: inherit;
 }
 
+.code-line:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+}
+
 .code-tag {
   color: #60a5fa;
+}
+
+.code-text {
+  color: #a7f3d0;
 }
 
 
