@@ -362,6 +362,110 @@ textarea {
   margin: 0;
 }
 
+.courses {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 80px var(--space-lg);
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg);
+}
+
+.course-card {
+  overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  border-color: #bfdbfe;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.08);
+}
+
+.course-image {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 170px;
+  padding: var(--space-lg);
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+}
+
+.course-card:nth-child(2) .course-image {
+  background: linear-gradient(135deg, #d1fae5, #ecfdf5);
+}
+
+.course-card:nth-child(3) .course-image {
+  background: linear-gradient(135deg, #ede9fe, #f5f3ff);
+}
+
+.course-label {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: var(--text-color);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.course-content {
+  padding: var(--space-lg);
+}
+
+.course-title {
+  margin: 0 0 var(--space-sm);
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.8;
+}
+
+.course-description {
+  min-height: 64px;
+  margin: 0 0 var(--space-lg);
+  color: #64748b;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.course-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.course-level {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.course-link {
+  color: var(--primary-color);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.course-link:hover {
+  color: var(--primary-dark);
+}
+
 
 @media (max-width: 768px) {
     .hero {
