@@ -803,7 +803,7 @@ textarea {
   line-height: 2;
 }
 
-
+/* mobile design */
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
@@ -822,4 +822,97 @@ textarea {
         flex-direction: column;
         gap: var(--space-md);
     }
+    .features-grid,
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+    .features,
+    .courses {
+        padding: 48px var(--space-md);
+    }
+    .section-heading {
+        margin-bottom: 32px;
+    }
+    .about-us {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        padding: 48px var(--space-md);
+    }
+    .about-content {
+        max-width: none;
+    }
+    .about-visual {
+        padding: var(--space-lg);
+        min-height: 240px;
+    }
+    .cta {
+        margin: 24px var(--space-md);
+        padding: 40px var(--space-md);
+        border-radius: 16px;
+    }
+    .cta-title {
+        font-size: 24px;
+        line-height: 1.8;
+    }
+    .cta-description {
+        font-size: 14px;
+    }
+    .contact-us {
+        padding: 48px var(--space-md);
+    }
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    .contact-info,
+    .contact-form {
+        padding: var(--space-lg);
+    }
+    .contact-btn {
+        align-self: stretch;
+    }
+    .footer {
+        padding: 36px var(--space-md) 0;
+    }
+    .footer-main {
+        flex-direction: column;
+        gap: 32px;
+        padding-bottom: 32px;
+    }
+    .footer-brand {
+        max-width: none;
+    }
+    .footer-links {
+        gap: var(--space-md);
+    }
+}
+
+/* tablet design */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .features-grid,
+  .courses-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .feature-card:last-child,
+  .course-card:last-child {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: calc(50% - var(--space-lg) / 2);
+  }
+  .hero {
+      gap: var(--space-md);
+      padding: var(--space-lg);
+  }
+  .hero-title {
+      font-size: 30px;
+  }
+  .about-us {
+      gap: 32px;
+  }
+  .contact-container {
+      gap: 24px;
+  }
+  .cta {
+      margin-inline: 24px;
+  }
 }
