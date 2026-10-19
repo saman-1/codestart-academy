@@ -841,6 +841,44 @@ textarea {
     display: none;
 }
 
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+
+    width: calc(100% - 32px);
+    max-width: 420px;
+    padding: 16px 20px;
+
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: center;
+
+    opacity: 1;
+    visibility: visible;
+}
+
+.toast.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.toast.success {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.toast[hidden] {
+    display: none;
+}
+
 /* mobile design */
 @media (max-width: 768px) {
     .hero {
@@ -963,8 +1001,6 @@ textarea {
       margin-inline: 24px;
   }
 }
-
-
 
 /* Mobile Header Refinement */
 @media (max-width: 768px) {
