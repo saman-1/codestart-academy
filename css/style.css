@@ -708,9 +708,34 @@ textarea {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+/* Invalid form fields */
+.form-group input.is-invalid,
+.form-group textarea.is-invalid {
+    border-color: #dc2626;
+    background-color: #fef2f2;
+    outline: none;
+}
+
+.form-group input.is-invalid:focus,
+.form-group textarea.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
 .form-group textarea {
   resize: vertical;
   min-height: 120px;
+}
+
+.field-error {
+    display: block;
+    margin-top: 6px;
+    color: #dc2626;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.field-error:empty {
+    display: none;
 }
 
 .contact-btn {

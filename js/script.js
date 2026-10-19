@@ -5,6 +5,9 @@ const navbarList = document.querySelector("#navbar-list");
 const navbarLinks = document.querySelectorAll("#navbar-list .link-item");
 const contactForm = document.querySelector("#contact-form");
 const toast = document.querySelector("#toast");
+const formInputs = document.querySelectorAll(
+    "#contact-form input, #contact-form textarea"
+);
 
 
 menuToggle.addEventListener("click", () => {
@@ -39,25 +42,49 @@ contactForm.addEventListener("submit", (event) => {
     // console.log("فرم ارسال شد!");
 
     const name = document.querySelector("#contact-name").value.trim();
+    const nameInput = document.querySelector("#contact-name");
+    const nameError = nameInput.nextElementSibling;
     const email = document.querySelector("#contact-email").value.trim();
+    const emailInput = document.querySelector("#contact-email");
+    const emailError = emailInput.nextElementSibling;
     const message = document.querySelector("#contact-message").value.trim();
+    const messageInput = document.querySelector("#contact-message");
+    const messageError = messageInput.nextElementSibling;
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (name.length < 3) {
+        nameInput.classList.add("is-invalid");
+        nameError.textContent = "نام باید حداقل ۳ کاراکتر باشد.";
+
         showToast("نام باید حداقل ۳ کاراکتر باشد.");
         return;
     }
 
+    nameInput.classList.remove("is-invalid");
+    nameError.textContent = "";
+
     if (!emailPattern.test(email)) {
+        emailInput.classList.add("is-invalid");
+        emailError.textContent = "لطفاً یک آدرس ایمیل معتبر وارد کنید.";
+
         showToast("لطفاً یک آدرس ایمیل معتبر وارد کنید.");
         return;
     }
 
+    emailInput.classList.remove("is-invalid");
+    emailError.textContent = "";
+
     if (message.length < 10) {
+        messageInput.classList.add("is-invalid");
+        messageError.textContent = "پیام باید حداقل ۱۰ کاراکتر باشد.";
+
         showToast("پیام باید حداقل ۱۰ کاراکتر باشد.");
         return;
     }
+
+    messageInput.classList.remove("is-invalid");
+    messageError.textContent = "";
 
     contactForm.reset();
     showToast("اطلاعات فرم معتبر است.", "success");
@@ -77,4 +104,9 @@ function showToast(message, type = "error") {
     }, 10000);
 }
 
-// showToast("این یک پیام آزمایشی است.", "error");
+formInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+        input.classList.remove("is-invalid");
+        input.nextElementSibling.textContent = "";
+    });
+});
