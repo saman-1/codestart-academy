@@ -879,6 +879,23 @@ textarea {
     display: none;
 }
 
+/* Toast entrance animation */
+.toast:not([hidden]) {
+    animation: toast-in 0.3s ease-out;
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
 /* mobile design */
 @media (max-width: 768px) {
     .hero {
@@ -1085,4 +1102,9 @@ textarea {
     }
 }
 
-
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .toast:not([hidden]) {
+        animation: none;
+    }
+}
