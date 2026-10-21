@@ -125,3 +125,21 @@ formInputs.forEach((input) => {
         input.nextElementSibling.textContent = "";
     });
 });
+
+// Dark / Light Theme
+const themeToggle = document.querySelector("#theme-toggle");
+const themeIcon = document.querySelector("#theme-icon");
+
+themeToggle.addEventListener("click", () => {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+
+    if (isDark) {
+        document.documentElement.removeAttribute("data-theme");
+        themeIcon.textContent = "🌙";
+        themeToggle.setAttribute("aria-label", "فعال‌کردن حالت تاریک");
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        themeIcon.textContent = "☀️";
+        themeToggle.setAttribute("aria-label", "فعال‌کردن حالت روشن");
+    }
+});

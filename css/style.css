@@ -8,6 +8,10 @@
     --bg-color: #ffffff;
     --border-color: #e5e7eb;
 
+    --surface-color: #f9fafb;
+    --card-color: #ffffff;
+    --muted-text-color: #6b7280;
+
     --space-sm: 8px;
     --space-md: 16px;
     --space-lg: 24px;
@@ -16,6 +20,18 @@
 
     --font-page: IRANSansX, Tahoma, Sans-serif;
 
+}
+
+[data-theme="dark"] {
+    --primary-color: #60a5fa;
+    --primary-dark: #3b82f6;
+    --text-color: #f3f4f6;
+    --bg-color: #111827;
+    --border-color: #374151;
+
+    --surface-color: #1f2937;
+    --card-color: #1f2937;
+    --muted-text-color: #d1d5db;
 }
 
 /* Reset */
@@ -919,6 +935,91 @@ textarea {
         opacity: 1;
         transform: translate(-50%, 0);
     }
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--border-color);
+    transform: scale(1.05);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+/* Theme-aware cards and sections */
+.feature-card,
+.course-card,
+.contact-form,
+.contact-info,
+.about-code-card {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+/* Section backgrounds */
+.features,
+.courses,
+.about-us,
+.contact-us {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Muted text */
+.feature-description,
+.course-description,
+.about-description,
+.contact-info p,
+.footer-description {
+    color: var(--muted-text-color);
+}
+
+/* Theme-aware form fields */
+.contact-form input,
+.contact-form textarea {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--muted-text-color);
+}
+
+/* Logo background in dark mode */
+[data-theme="dark"] .logo {
+    background-color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+/* Course image badges in dark mode */
+[data-theme="dark"] .course-label {
+    background-color: #1f2937;
+    color: #f9fafb;
+    border: 1px solid #4b5563;
 }
 
 /* mobile design */
