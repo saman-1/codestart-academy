@@ -130,15 +130,29 @@ formInputs.forEach((input) => {
 const themeToggle = document.querySelector("#theme-toggle");
 const themeIcon = document.querySelector("#theme-icon");
 
+// Read the saved theme
+const savedTheme = localStorage.getItem("theme");
+
+// Apply the saved theme
+if (savedTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+    themeIcon.textContent = "☀️";
+    themeToggle.setAttribute("aria-label", "فعال‌کردن حالت روشن");
+}
+
 themeToggle.addEventListener("click", () => {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
 
     if (isDark) {
         document.documentElement.removeAttribute("data-theme");
+        localStorage.setItem("theme", "light");
+
         themeIcon.textContent = "🌙";
         themeToggle.setAttribute("aria-label", "فعال‌کردن حالت تاریک");
     } else {
         document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+
         themeIcon.textContent = "☀️";
         themeToggle.setAttribute("aria-label", "فعال‌کردن حالت روشن");
     }
