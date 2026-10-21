@@ -8,6 +8,9 @@ const toast = document.querySelector("#toast");
 const formInputs = document.querySelectorAll(
     "#contact-form input, #contact-form textarea"
 );
+const submitButton = contactForm.querySelector(
+    'button[type="submit"]'
+);
 
 
 menuToggle.addEventListener("click", () => {
@@ -86,8 +89,20 @@ contactForm.addEventListener("submit", (event) => {
     messageInput.classList.remove("is-invalid");
     messageError.textContent = "";
 
-    contactForm.reset();
-    showToast("اطلاعات فرم معتبر است.", "success");
+    submitButton.disabled = true;
+    submitButton.textContent = "در حال ارسال ...";
+
+    setTimeout(() => {
+        contactForm.reset();
+
+        showToast(
+            "اعتبار سنجی موفق بود اما ارسال واقعی هنوز فعال نیست.",
+            "success"
+        );
+
+        submitButton.disabled = false;
+        submitButton.textContent = "ارسال پیام";
+    }, 1000);
 });
 
 
