@@ -467,29 +467,60 @@
                 <!-- Password Form Group -->
                 <div class="form-group">
                     <label for="auth-password">رمز عبور</label>
-                    <input
-                        type="password"
-                        id="auth-password"
-                        name="password"
-                        placeholder="رمز عبورت رو وارد کن"
-                        autocomplete="current-password"
-                        required
-                        minlength="8"
-                    />
+
+                    <div class="password-input-wrapper">
+                        <input
+                            type="password"
+                            id="auth-password"
+                            name="password"
+                            placeholder="رمز عبورت رو وارد کن"
+                            autocomplete="current-password"
+                            required
+                            minlength="8"
+                        />
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            aria-label="نمایش رمز عبور"
+                            aria-pressed="false"
+                            data-target="auth-password"
+                        >
+                            👁
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Repeat Password Form Group -->
-                <div class="form-group signup-only-field" id="confirm-password-group" hidden>
+                <div
+                    class="form-group signup-only-field"
+                    id="confirm-password-group"
+                    hidden
+                >
                     <label for="auth-confirm-password">تکرار رمز عبور</label>
-                    <input
-                        type="password"
-                        id="auth-confirm-password"
-                        name="confirm-password"
-                        placeholder="رمز عبورت رو دوباره وارد کن"
-                        autocomplete="new-password"
-                        minlength="8"
-                        disabled
-                    />
+
+                    <div class="password-input-wrapper">
+                        <input
+                            type="password"
+                            id="auth-confirm-password"
+                            name="confirm-password"
+                            placeholder="رمز عبورت رو دوباره وارد کن"
+                            autocomplete="new-password"
+                            minlength="8"
+                            disabled
+                        />
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            aria-label="نمایش تکرار رمز عبور"
+                            aria-pressed="false"
+                            data-target="auth-confirm-password"
+                            disabled
+                        >
+                            👁
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Form Message Aria -->

@@ -331,3 +331,30 @@ authForm.addEventListener("submit", (event) => {
         );
     }
 });
+
+const passwordToggleButtons = document.querySelectorAll(".password-toggle");
+
+passwordToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const targetId = button.dataset.target;
+        const passwordInput = document.getElementById(targetId);
+
+        if (!passwordInput) return;
+
+        const isPasswordHidden = passwordInput.type === "password";
+
+        passwordInput.type = isPasswordHidden ? "text" : "password";
+
+        button.setAttribute(
+            "aria-pressed",
+            String(isPasswordHidden)
+        );
+
+        button.setAttribute(
+            "aria-label",
+            isPasswordHidden
+                ? "مخفی کردن رمز عبور"
+                : "نمایش رمز عبور"
+        );
+    });
+});

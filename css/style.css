@@ -1199,6 +1199,38 @@ body,
     cursor: not-allowed;
 }
 
+/* Password Visibility Toggle */
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    width: 100%;
+    padding-inline-end: 44px;
+}
+
+.password-toggle {
+    position: absolute;
+    inset-inline-end: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    padding: 4px;
+    color: var(--text-color, currentColor);
+}
+
+.password-toggle:focus-visible {
+    outline: 2px solid var(--primary-color, #2563eb);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
 @media (max-width: 480px) {
     .auth-modal-content {
         padding: 28px 20px;
