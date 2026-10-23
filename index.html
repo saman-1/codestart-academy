@@ -63,11 +63,24 @@
                     </a>
                 </li>
 
-                <!-- Signin & signup Section -->
+                <!-- Mobile Auth Buttons -->
                 <li class="navbar-item mobile-auth">
                     <div class="signin-signup">
-                        <button class="btn signup-btn">ثبت نام</button>
-                        <button class="btn signin-btn">ورود</button>
+                        <button
+                            class="btn signup-btn"
+                            id="mobile-signup-btn"
+                            type="button"
+                        >
+                            ثبت نام
+                        </button>
+
+                        <button
+                            class="btn signin-btn"
+                            id="mobile-signin-btn"
+                            type="button"
+                        >
+                            ورود
+                        </button>
                     </div>
                 </li>
             </ul>
@@ -85,8 +98,21 @@
 
             <!-- Desktop Auth Buttons -->
             <div class="signin-signup desktop-auth">
-                <button class="btn signup-btn">ثبت نام</button>
-                <button class="btn signin-btn">ورود</button>
+                <button
+                    class="btn signup-btn"
+                    id="desktop-signup-btn"
+                    type="button"
+                >
+                    ثبت نام
+                </button>
+
+                <button
+                    class="btn signin-btn"
+                    id="desktop-signin-btn"
+                    type="button"
+                >
+                    ورود
+                </button>
             </div>
 
         </nav>
@@ -399,6 +425,96 @@
             <p>© 2026 CodeStart Academy. تمام حقوق محفوظ است.</p>
         </div>
     </footer>
+
+    <!-- Authentication Modal -->
+    <div class="auth-modal" id="auth-modal" aria-hidden="true">
+        <div class="auth-modal-overlay" id="auth-modal-overlay"></div>
+
+        <div
+            class="auth-modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="auth-modal-title"
+        >
+            <button
+                class="auth-modal-close"
+                id="auth-modal-close"
+                type="button"
+                aria-label="بستن پنجره"
+            >
+                &times;
+            </button>
+
+            <h2 id="auth-modal-title">ورود به حساب کاربری</h2>
+            <p id="auth-modal-description">
+                برای ادامه، اطلاعات حساب خودت رو وارد کن.
+            </p>
+
+            <form id="auth-form" novalidate>
+                <!-- Email Form Group -->
+                <div class="form-group">
+                    <label for="auth-email">ایمیل</label>
+                    <input
+                        type="email"
+                        id="auth-email"
+                        name="email"
+                        placeholder="example@email.com"
+                        autocomplete="email"
+                        required
+                    />
+                </div>
+
+                <!-- Password Form Group -->
+                <div class="form-group">
+                    <label for="auth-password">رمز عبور</label>
+                    <input
+                        type="password"
+                        id="auth-password"
+                        name="password"
+                        placeholder="رمز عبورت رو وارد کن"
+                        autocomplete="current-password"
+                        required
+                        minlength="8"
+                    />
+                </div>
+
+                <!-- Repeat Password Form Group -->
+                <div class="form-group signup-only-field" id="confirm-password-group" hidden>
+                    <label for="auth-confirm-password">تکرار رمز عبور</label>
+                    <input
+                        type="password"
+                        id="auth-confirm-password"
+                        name="confirm-password"
+                        placeholder="رمز عبورت رو دوباره وارد کن"
+                        autocomplete="new-password"
+                        minlength="8"
+                        disabled
+                    />
+                </div>
+
+                <!-- Form Message Aria -->
+                <p
+                    class="auth-form-message"
+                    id="auth-form-message"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+                <!-- Signin Btn -->
+                <button type="submit" class="btn auth-submit-btn">
+                    ورود
+                </button>
+            </form>
+
+            <!-- Redirect To Register Form -->
+            <p class="auth-switch">
+                حساب کاربری نداری؟
+                <button type="button" id="auth-switch-btn">
+                    ثبت نام
+                </button>
+            </p>
+        </div>
+    </div>
 
     <script src="./js/script.js"></script>
 </body>

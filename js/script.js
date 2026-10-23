@@ -157,3 +157,177 @@ themeToggle.addEventListener("click", () => {
         themeToggle.setAttribute("aria-label", "فعال‌کردن حالت روشن");
     }
 });
+
+// Modal Js Codes
+const authModal = document.querySelector("#auth-modal");
+const authModalOverlay = document.querySelector("#auth-modal-overlay");
+const authModalClose = document.querySelector("#auth-modal-close");
+const authModalTitle = document.querySelector("#auth-modal-title");
+const authModalDescription = document.querySelector("#auth-modal-description");
+const authForm = document.querySelector("#auth-form");
+const authSwitchBtn = document.querySelector("#auth-switch-btn");
+const authSubmitBtn = document.querySelector(".auth-submit-btn");
+
+const authEmailInput = document.querySelector("#auth-email");
+const authPasswordInput = document.querySelector("#auth-password");
+const confirmPasswordInput = document.querySelector("#auth-confirm-password");
+const confirmPasswordGroup = document.querySelector("#confirm-password-group");
+const authFormMessage = document.querySelector("#auth-form-message");
+
+const authButtons = document.querySelectorAll(
+    "#desktop-signup-btn, #desktop-signin-btn, #mobile-signup-btn, #mobile-signin-btn"
+);
+
+let authMode = "signin";
+
+function clearAuthErrors() {
+    authFormMessage.textContent = "";
+    authFormMessage.className = "auth-form-message";
+
+    [authEmailInput, authPasswordInput, confirmPasswordInput].forEach((input) => {
+        input.classList.remove("is-invalid");
+        input.removeAttribute("aria-invalid");
+    });
+}
+
+function showAuthMessage(message, type = "error") {
+    authFormMessage.textContent = message;
+    authFormMessage.className = `auth-form-message is-${type}`;
+}
+
+function openAuthModal(mode) {
+    authMode = mode;
+
+    const isSignup = authMode === "signup";
+
+    authModalTitle.textContent = isSignup
+        ? "ایجاد حساب کاربری"
+        : "ورود به حساب کاربری";
+
+    authModalDescription.textContent = isSignup
+        ? "برای ساخت حساب، اطلاعاتت رو وارد کن."
+        : "برای ادامه، اطلاعات حساب خودت رو وارد کن.";
+
+    authSubmitBtn.textContent = isSignup ? "ثبت نام" : "ورود";
+    authSwitchBtn.textContent = isSignup ? "ورود" : "ثبت نام";
+
+    confirmPasswordGroup.hidden = !isSignup;
+    confirmPasswordInput.disabled = !isSignup;
+    confirmPasswordInput.required = isSignup;
+
+    authPasswordInput.autocomplete = isSignup
+        ? "new-password"
+        : "current-password";
+
+    authForm.reset();
+    clearAuthErrors();
+
+    authModal.classList.add("is-open");
+    authModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    authEmailInput.focus();
+}
+
+function closeAuthModal() {
+    authModal.classList.remove("is-open");
+    authModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+
+    clearAuthErrors();
+    authForm.reset();
+}
+
+authButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const mode = button.classList.contains("signup-btn")
+            ? "signup"
+            : "signin";
+
+        openAuthModal(mode);
+    });
+});
+
+authModalClose.addEventListener("click", closeAuthModal);
+authModalOverlay.addEventListener("click", closeAuthModal);
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && authModal.classList.contains("is-open")) {
+        closeAuthModal();
+    }
+});
+
+authSwitchBtn.addEventListener("click", () => {
+    openAuthModal(authMode === "signin" ? "signup" : "signin");
+});
+
+[authEmailInput, authPasswordInput, confirmPasswordInput].forEach((input) => {
+    input.addEventListener("input", () => {
+        input.classList.remove("is-invalid");
+        input.removeAttribute("aria-invalid");
+
+        authFormMessage.textContent = "";
+        authFormMessage.className = "auth-form-message";
+    });
+});
+
+authForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    clearAuthErrors();
+
+    const email = authEmailInput.value.trim();
+    const password = authPasswordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+
+    if (!email) {
+        authEmailInput.classList.add("is-invalid");
+        authEmailInput.setAttribute("aria-invalid", "true");
+        showAuthMessage("لطفاً ایمیلت رو وارد کن.");
+        authEmailInput.focus();
+        return;
+    }
+
+    if (!authEmailInput.validity.valid) {
+        authEmailInput.classList.add("is-invalid");
+        authEmailInput.setAttribute("aria-invalid", "true");
+        showAuthMessage("لطفاً یک آدرس ایمیل معتبر وارد کن.");
+        authEmailInput.focus();
+        return;
+    }
+
+    if (!password) {
+        authPasswordInput.classList.add("is-invalid");
+        authPasswordInput.setAttribute("aria-invalid", "true");
+        showAuthMessage("لطفاً رمز عبورت رو وارد کن.");
+        authPasswordInput.focus();
+        return;
+    }
+
+    if (password.length < 8) {
+        authPasswordInput.classList.add("is-invalid");
+        authPasswordInput.setAttribute("aria-invalid", "true");
+        showAuthMessage("رمز عبور باید حداقل ۸ کاراکتر داشته باشه.");
+        authPasswordInput.focus();
+        return;
+    }
+
+    if (authMode === "signup" && password !== confirmPassword) {
+        confirmPasswordInput.classList.add("is-invalid");
+        confirmPasswordInput.setAttribute("aria-invalid", "true");
+        showAuthMessage("رمز عبور و تکرار اون با هم مطابقت ندارن.");
+        confirmPasswordInput.focus();
+        return;
+    }
+
+    if (authMode === "signup") {
+        showAuthMessage(
+            "اعتبارسنجی انجام شد؛ ثبت‌نام واقعی هنوز به بک‌اند نیاز داره.",
+            "success"
+        );
+    } else {
+        showAuthMessage(
+            "اطلاعات از نظر اولیه معتبره؛ ورود واقعی هنوز پیاده‌سازی نشده.",
+            "success"
+        );
+    }
+});
