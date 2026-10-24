@@ -1008,13 +1008,6 @@ textarea {
     color: var(--muted-text-color);
 }
 
-/* Logo background in dark mode */
-[data-theme="dark"] .logo {
-    background-color: #ffffff;
-    padding: 6px 10px;
-    border-radius: 10px;
-}
-
 /* Course image badges in dark mode */
 [data-theme="dark"] .course-label {
     background-color: #1f2937;

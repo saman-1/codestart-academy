@@ -130,6 +130,17 @@ formInputs.forEach((input) => {
 const themeToggle = document.querySelector("#theme-toggle");
 const themeIcon = document.querySelector("#theme-icon");
 
+const siteLogo = document.querySelector("#site-logo");
+
+function updateLogo() {
+    const isDark =
+        document.documentElement.getAttribute("data-theme") === "dark";
+
+    siteLogo.src = isDark
+        ? "./images/logo-dark.png"
+        : "./images/logo-light.png";
+}
+
 // Read the saved theme
 const savedTheme = localStorage.getItem("theme");
 
@@ -140,6 +151,8 @@ if (savedTheme === "dark") {
     themeToggle.setAttribute("aria-label", "فعال‌کردن حالت روشن");
 }
 
+updateLogo();
+
 themeToggle.addEventListener("click", () => {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
 
@@ -149,12 +162,14 @@ themeToggle.addEventListener("click", () => {
 
         themeIcon.textContent = "🌙";
         themeToggle.setAttribute("aria-label", "فعال‌کردن حالت تاریک");
+        updateLogo();
     } else {
         document.documentElement.setAttribute("data-theme", "dark");
         localStorage.setItem("theme", "dark");
 
         themeIcon.textContent = "☀️";
         themeToggle.setAttribute("aria-label", "فعال‌کردن حالت روشن");
+        updateLogo();
     }
 });
 
@@ -358,3 +373,5 @@ passwordToggleButtons.forEach((button) => {
         );
     });
 });
+
+
