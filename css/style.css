@@ -1231,6 +1231,14 @@ body,
     border-radius: 4px;
 }
 
+.desktop-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-shrink: 0;
+}
+
+/* mobile design */
 @media (max-width: 480px) {
     .auth-modal-content {
         padding: 28px 20px;
@@ -1241,7 +1249,6 @@ body,
     }
 }
 
-/* mobile design */
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
@@ -1331,6 +1338,9 @@ body,
     }
     .menu-toggle {
         display: flex;
+    }
+    .desktop-actions {
+        display: contents;
     }
 }
 
