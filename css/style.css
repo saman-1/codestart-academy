@@ -1878,3 +1878,117 @@ body,
         min-height: 220px;
     }
 }
+
+/* Course Information Cards */
+.course-info {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 0 1rem;
+}
+
+.course-info-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #dce1ec);
+    border-radius: 1rem;
+    background: var(--card-bg, #ffffff);
+    color: var(--text-color, #20243a);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.course-info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 8%);
+}
+
+.course-info-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 0.85rem;
+    background: var(--primary-color, #e8edff);
+    font-size: 1.5rem;
+}
+
+.course-info-card h3 {
+    margin: 0 0 0.4rem;
+    color: var(--text-color, #20243a);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.course-info-card p {
+    margin: 0;
+    color: var(--text-color, #555b70);
+    font-size: 0.85rem;
+    line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .course-info {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .course-info {
+        gap: 0.75rem;
+        margin-bottom: 3rem;
+        padding: 0 1rem;
+    }
+
+    .course-info-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .course-info-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Course Information - Light Mode */
+.course-info-card {
+    background-color: #ffffff;
+    border-color: #dce1ec;
+    color: #20243a;
+}
+
+.course-info-card h3 {
+    color: #20243a;
+}
+
+.course-info-card p {
+    color: #555b70;
+}
+
+/* Course Information - Dark Mode */
+[data-theme="dark"] .course-info-card {
+    background-color: #1b2334;
+    border-color: #303b50;
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .course-info-card h3 {
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .course-info-card p {
+    color: #b8c2d3;
+}
+
+[data-theme="dark"] .course-info-icon {
+    background-color: #263550;
+}
