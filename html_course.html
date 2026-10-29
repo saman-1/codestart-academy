@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>دوره آموزش HTML | CodeStart Academy</title>
+
+    <meta
+        name="description"
+        content="یادگیری HTML از پایه تا ساخت اولین صفحه وب در CodeStart Academy"
+    >
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    
+    <header>
+        <nav class="navbar">
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="باز کردن منو"
+                aria-expanded="false"
+                aria-controls="navbar-list"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="logo">
+                <a href="./index.html" aria-label="صفحه اصلی CodeStart Academy">
+                    <img
+                        src="./images/logo-light.png"
+                        alt="لوگوی CodeStart Academy"
+                        class="logo-image"
+                        id="site-logo"
+                    >
+                </a>
+            </div>
+
+            <ul class="navbar-list" id="navbar-list">
+                <li class="list-item navbar-item home-item">
+                    <a href="./index.html#home" class="link-item">صفحه اصلی</a>
+                </li>
+                <li class="list-item navbar-item features-item">
+                    <a href="./index.html#features" class="link-item">خدمات</a>
+                </li>
+                <li class="list-item navbar-item courses-item">
+                    <a href="./index.html#courses" class="link-item">دوره‌ها</a>
+                </li>
+                <li class="list-item navbar-item about-us-item">
+                    <a href="./index.html#about-us" class="link-item">درباره ما</a>
+                </li>
+                <li class="list-item navbar-item contact-us-item">
+                    <a href="./index.html#contact-us" class="link-item">تماس با ما</a>
+                </li>
+
+                <li class="navbar-item mobile-auth">
+                    <div class="signin-signup">
+                        <button
+                            class="btn signup-btn"
+                            id="mobile-signup-btn"
+                            type="button"
+                        >ثبت نام</button>
+
+                        <button
+                            class="btn signin-btn"
+                            id="mobile-signin-btn"
+                            type="button"
+                        >ورود</button>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="desktop-actions">
+                <button
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    type="button"
+                    aria-label="فعال‌کردن حالت تاریک"
+                    title="تغییر تم"
+                >
+                    <span id="theme-icon" aria-hidden="true">🌙</span>
+                </button>
+
+                <div class="signin-signup desktop-auth">
+                    <button
+                        class="btn signup-btn"
+                        id="desktop-signup-btn"
+                        type="button"
+                    >ثبت نام</button>
+
+                    <button
+                        class="btn signin-btn"
+                        id="desktop-signin-btn"
+                        type="button"
+                    >ورود</button>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <main>
+        <section class="course-hero">
+            <div class="course-hero-content">
+                <span class="course-badge">مسیر یادگیری طراحی وب</span>
+
+                <h1 class="course-title">
+                    آموزش HTML از صفر تا ساخت اولین صفحه وب
+                </h1>
+
+                <p class="course-description">
+                    با HTML ساختار صفحات وب رو یاد بگیر، با تگ‌ها و
+                    عناصر اصلی آشنا شو و اولین صفحه وب خودت رو بساز.
+                </p>
+
+                <div class="course-meta">
+                    <span>📘 سطح: مقدماتی</span>
+                    <span>💻 پیش‌نیاز: بدون پیش‌نیاز</span>
+                    <span>🛠️ همراه با تمرین و پروژه</span>
+                </div>
+
+                <a href="#course-syllabus" class="btn course-start-btn">
+                    مشاهده سرفصل‌های دوره
+                </a>
+            </div>
+
+            <div class="course-hero-visual">
+                <div class="course-code-card">
+                    <div class="course-code-header">
+                        <span class="code-dot"></span>
+                        <span class="code-dot"></span>
+                        <span class="code-dot"></span>
+                        <span class="course-code-filename">index.html</span>
+                    </div>
+
+                    <pre><code>&lt;!DOCTYPE html&gt;
+    &lt;html lang="fa" dir="rtl"&gt;
+    &lt;head&gt;
+        &lt;title&gt;اولین صفحه من&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;سلام دنیا!&lt;/h1&gt;
+        &lt;p&gt;من برنامه‌نویسی وب
+        را شروع کردم.&lt;/p&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="course-syllabus" id="course-syllabus">
+            <div class="syllabus-header">
+                <span class="course-badge">مسیر یادگیری</span>
+                <h2>سرفصل‌های دوره HTML</h2>
+                <p>
+                    قدم‌به‌قدم با ساختار صفحات وب آشنا شو و اولین صفحه خودت رو بساز.
+                </p>
+            </div>
+
+            <div class="syllabus-grid">
+                <article class="syllabus-card">
+                    <span class="syllabus-number">01</span>
+                    <h3>آشنایی با HTML</h3>
+                    <p>HTML چیست، چه کاربردی دارد و مرورگر چگونه صفحات وب را نمایش می‌دهد.</p>
+                    <span class="syllabus-level">مقدماتی</span>
+                </article>
+
+                <article class="syllabus-card">
+                    <span class="syllabus-number">02</span>
+                    <h3>ساختار یک سند HTML</h3>
+                    <p>DOCTYPE، تگ‌های html، head و body و ساخت اولین فایل HTML.</p>
+                    <span class="syllabus-level">مقدماتی</span>
+                </article>
+
+                <article class="syllabus-card">
+                    <span class="syllabus-number">03</span>
+                    <h3>متن‌ها و عنوان‌ها</h3>
+                    <p>استفاده از عنوان‌ها، پاراگراف‌ها، لینک‌ها و قالب‌بندی متن.</p>
+                    <span class="syllabus-level">مقدماتی</span>
+                </article>
+
+                <article class="syllabus-card">
+                    <span class="syllabus-number">04</span>
+                    <h3>تصاویر و پیوندها</h3>
+                    <p>اضافه‌کردن تصویر، ساخت لینک و آشنایی با مسیر فایل‌ها.</p>
+                    <span class="syllabus-level">مقدماتی</span>
+                </article>
+
+                <article class="syllabus-card">
+                    <span class="syllabus-number">05</span>
+                    <h3>فهرست‌ها و جدول‌ها</h3>
+                    <p>ساخت فهرست‌های مرتب و نامرتب و نمایش اطلاعات در جدول.</p>
+                    <span class="syllabus-level">تمرینی</span>
+                </article>
+
+                <article class="syllabus-card">
+                    <span class="syllabus-number">06</span>
+                    <h3>فرم‌های HTML</h3>
+                    <p>آشنایی با input، label، دکمه‌ها و ساخت فرم ساده.</p>
+                    <span class="syllabus-level">تمرینی</span>
+                </article>
+
+                <article class="syllabus-card">
+                    <span class="syllabus-number">07</span>
+                    <h3>معنای تگ‌ها و ساختار معنایی</h3>
+                    <p>کاربرد header، nav، main، section، article و footer.</p>
+                    <span class="syllabus-level">کاربردی</span>
+                </article>
+
+                <article class="syllabus-card">
+                    <span class="syllabus-number">08</span>
+                    <h3>پروژه پایانی</h3>
+                    <p>ساخت یک صفحه وب ساده با استفاده از آموخته‌های دوره.</p>
+                    <span class="syllabus-level">پروژه‌محور</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="course-project">
+            <div class="course-project-content">
+                <span class="course-badge">پروژه‌محور</span>
+
+                <h2>آماده‌ای اولین صفحه وب خودت رو بسازی؟</h2>
+
+                <p>
+                    در پایان این دوره، با استفاده از تگ‌های HTML یک صفحه وب
+                    می‌سازی که شامل عنوان، متن، تصویر، لینک، فهرست و فرم ساده است.
+                </p>
+
+                <ul class="course-project-list">
+                    <li>ساختار استاندارد یک سند HTML</li>
+                    <li>استفاده از عناصر متنی و تصاویر</li>
+                    <li>ساخت لینک‌ها و فهرست‌ها</li>
+                    <li>طراحی یک فرم ساده</li>
+                </ul>
+
+                <a href="#course-syllabus" class="btn course-start-btn">
+                    شروع مسیر یادگیری
+                </a>
+            </div>
+
+            <div class="course-project-visual" aria-hidden="true">
+                <div class="project-icon">&lt;/&gt;</div>
+                <span>اولین پروژه من</span>
+                <div class="project-progress">
+                    <span></span>
+                </div>
+                <small>قدم‌به‌قدم تا اولین صفحه وب</small>
+            </div>
+        </section>
+    </main>
+
+    
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="./index.html" class="footer-logo">CodeStart Academy</a>
+                <p class="footer-description">
+                    یادگیری برنامه‌نویسی، قدم‌به‌قدم تا ساختن آینده‌ای بهتر.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="footer-heading">دسترسی سریع</h3>
+                <a href="./index.html#features">ویژگی‌ها</a>
+                <a href="./index.html#courses">دوره‌ها</a>
+                <a href="./index.html#about-us">درباره ما</a>
+                <a href="./index.html#contact-us">تماس با ما</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 CodeStart Academy. تمام حقوق محفوظ است.</p>
+        </div>
+    </footer>
+
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
