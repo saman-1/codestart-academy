@@ -1231,6 +1231,22 @@ body,
     flex-shrink: 0;
 }
 
+.course-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.course-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
 /* mobile design */
 @media (max-width: 480px) {
     .auth-modal-content {
@@ -1343,8 +1359,8 @@ body,
   .courses-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .feature-card:last-child,
-  .course-card:last-child {
+  .feature-card:last-child:nth-child(odd),
+  .course-card:last-child:nth-child(odd) {
       grid-column: 1 / -1;
       justify-self: center;
       width: calc(50% - var(--space-lg) / 2);
