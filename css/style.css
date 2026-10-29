@@ -1353,6 +1353,13 @@ body,
     }
 }
 
+@media (min-width: 769px) and (max-width: 900px) {
+    .list-item.navbar-item.about-us-item,
+    .list-item.navbar-item.contact-us-item {
+        display: none;
+    }
+}
+
 /* tablet design */
 @media (min-width: 769px) and (max-width: 1024px) {
   .features-grid,
