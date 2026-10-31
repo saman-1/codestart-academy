@@ -80,6 +80,17 @@
             </ul>
 
             <div class="desktop-actions">
+                <!-- Search Toggle Button -->
+                <button
+                    type="button"
+                    class="theme-toggle search-toggle"
+                    id="search-toggle"
+                    aria-label="باز کردن جست‌وجو"
+                    aria-expanded="false"
+                >
+                    🔍
+                </button>
+
                 <button
                     class="theme-toggle"
                     id="theme-toggle"
@@ -107,6 +118,30 @@
 
         </nav>
     </header>
+
+    <!-- Search Box -->
+    <div class="search-box" id="search-box" hidden>
+        <div class="search-box-content">
+            <div class="search-input-wrapper">
+                <span class="search-icon" aria-hidden="true">🔍</span>
+                <input
+                    type="search"
+                    id="course-search"
+                    placeholder="نام دوره مورد نظر را جست‌وجو کنید..."
+                    aria-label="جست‌وجوی دوره‌ها"
+                >
+            </div>
+
+            <button
+                type="button"
+                id="search-close"
+                class="theme-toggle search-close"
+                aria-label="بستن جست‌وجو"
+            >
+                ✕
+            </button>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main>

@@ -34,6 +34,7 @@ if (menuToggle && navbarList) {
 }
 
 
+
 // Contact Form
 const contactForm = document.querySelector("#contact-form");
 const toast = document.querySelector("#toast");
@@ -115,6 +116,7 @@ if (contactForm) {
     });
 }
 
+
 // Toast Notification
 let toastTimeout;
 
@@ -131,6 +133,8 @@ function showToast(message, type = "error") {
         toast.hidden = true;
     }, 10000);
 }
+
+
 
 // Dark / Light Theme
 const themeToggle = document.querySelector("#theme-toggle");
@@ -190,6 +194,8 @@ if (themeToggle) {
         updateLogo();
     });
 }
+
+
 
 // Modal JS Codes
 const authModal = document.querySelector("#auth-modal");
@@ -416,3 +422,25 @@ passwordToggleButtons.forEach((button) => {
 });
 
 
+// Search Box Toggle
+const searchToggle = document.querySelector("#search-toggle");
+const searchBox = document.querySelector("#search-box");
+
+// Open Search Box
+if (searchToggle && searchBox) {
+    searchToggle.addEventListener("click", () => {
+        searchBox.hidden = false;
+        document.querySelector("#course-search").focus();
+        searchToggle.setAttribute("aria-expanded", "true");
+    });
+}
+
+// Close Search Box
+const searchClose = document.querySelector("#search-close");
+
+if (searchClose && searchBox) {
+    searchClose.addEventListener("click", () => {
+        searchBox.hidden = true;
+        searchToggle.setAttribute("aria-expanded", "false");
+    });
+}
