@@ -479,6 +479,24 @@ const courses = [
         description: "با CSS ظاهر صفحات وب را زیبا و حرفه‌ای طراحی کن.",
         level: "مناسب برای شروع",
         link: "./css_course.html"
+    },
+    {
+        id: 3,
+        title: "آموزش JavaScript",
+        image: "./images/courses-img/JS_Course.png",
+        label: "متوسط",
+        description: "با JavaScript به صفحات وب خودت تعامل و پویایی اضافه کن.",
+        level: "آشنایی با HTML و CSS",
+        link: "./js_course.html"
+    },
+    {
+        id: 4,
+        title: "آموزش Python",
+        image: "./images/courses-img/Python_Course.png",
+        label: "مقدماتی",
+        description: "با زبان Python برنامه‌نویسی رو یاد بگیر و اولین برنامه‌های خودت رو بساز.",
+        level: "مناسب برای شروع",
+        link: "./python_course.html"
     }
 ];
 
@@ -512,5 +530,12 @@ function renderCourses(courseList = courses) {
     `).join("");
 }
 
-renderCourses();
+
+const isAllCoursesPage = document.querySelector("#all-courses-page");
+
+if (isAllCoursesPage) {
+    renderCourses();
+} else {
+    renderCourses(courses.slice(-3).reverse());
+}
 
