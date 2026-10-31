@@ -447,15 +447,17 @@ if (searchClose && searchBox) {
 
 const courseSearch = document.querySelector("#course-search");
 
-courseSearch.addEventListener("input", () => {
-    const searchValue = courseSearch.value.trim().toLowerCase();
+if (courseSearch) {
+    courseSearch.addEventListener("input", () => {
+        const searchValue = courseSearch.value.trim().toLowerCase();
 
-    const filteredCourses = courses.filter(course =>
-        course.title.toLowerCase().includes(searchValue)
-    );
+        const filteredCourses = courses.filter(course =>
+            course.title.toLowerCase().includes(searchValue)
+        );
 
-    renderCourses(filteredCourses);
-});
+        renderCourses(filteredCourses);
+    });
+}
 
 
 // Course Cards Data
@@ -482,6 +484,8 @@ const courses = [
 
 function renderCourses(courseList = courses) {
     const coursesContainer = document.querySelector("#courses-container");
+
+    if (!coursesContainer) return;
 
     coursesContainer.innerHTML = courseList.map(course => `
         <article class="card course-card">
