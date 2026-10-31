@@ -499,6 +499,12 @@ textarea {
   color: var(--primary-dark);
 }
 
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
 .cta {
   max-width: 1152px;
   margin: 40px auto;

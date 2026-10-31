@@ -444,3 +444,69 @@ if (searchClose && searchBox) {
         searchToggle.setAttribute("aria-expanded", "false");
     });
 }
+
+const courseSearch = document.querySelector("#course-search");
+
+courseSearch.addEventListener("input", () => {
+    const searchValue = courseSearch.value.trim().toLowerCase();
+
+    const filteredCourses = courses.filter(course =>
+        course.title.toLowerCase().includes(searchValue)
+    );
+
+    renderCourses(filteredCourses);
+});
+
+
+// Course Cards Data
+const courses = [
+    {
+        id: 1,
+        title: "آموزش HTML",
+        image: "./images/courses-img/HTML_Course.png",
+        label: "مقدماتی",
+        description: "اولین قدم برای ساخت صفحات وب را بردار و وب‌سایت خودت را طراحی کن.",
+        level: "مناسب برای شروع",
+        link: "./html_course.html"
+    },
+    {
+        id: 2,
+        title: "آموزش CSS",
+        image: "./images/courses-img/CSS_Course.png",
+        label: "مقدماتی",
+        description: "با CSS ظاهر صفحات وب را زیبا و حرفه‌ای طراحی کن.",
+        level: "مناسب برای شروع",
+        link: "./css_course.html"
+    }
+];
+
+function renderCourses(courseList = courses) {
+    const coursesContainer = document.querySelector("#courses-container");
+
+    coursesContainer.innerHTML = courseList.map(course => `
+        <article class="card course-card">
+            <div class="course-image">
+                <span class="course-label">${course.label}</span>
+                <img src="${course.image}" alt="${course.title}">
+            </div>
+
+            <div class="course-content">
+                <h3 class="course-title">${course.title}</h3>
+
+                <p class="course-description">
+                    ${course.description}
+                </p>
+
+                <div class="course-footer">
+                    <span class="course-level">${course.level}</span>
+                    <a href="${course.link}" class="course-link">
+                        مشاهده دوره ←
+                    </a>
+                </div>
+            </div>
+        </article>
+    `).join("");
+}
+
+renderCourses();
+
