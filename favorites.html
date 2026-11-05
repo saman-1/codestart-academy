@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>علاقه‌مندی‌های من | CodeStart Academy</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header id="home">
+
+        <!-- Navbar Section -->
+        <nav class="navbar">
+
+            <!-- Mobile Menu Toggle -->
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="باز کردن منو"
+                aria-expanded="false"
+                aria-controls="navbar-list"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Logo Section -->
+            <div class="logo">
+                <img src="./images/logo-light.png" alt="لوگوی وبسایت آموزشی کد استارت آکادمی" class="logo-image" id="site-logo">
+            </div>
+
+            <!-- Menu List -->
+            <ul class="navbar-list" id="navbar-list">
+                <li class="list-item navbar-item home-item">
+                    <a href="./index.html#home" class="link-item">
+                        صفحه اصلی
+                    </a>
+                </li>
+                <li class="list-item navbar-item features-item">
+                    <a href="./index.html#features" class="link-item">
+                        خدمات
+                    </a>
+                </li>
+                <li class="list-item navbar-item courses-item">
+                    <a href="./all_courses.html" class="link-item">
+                        دوره ها
+                    </a>
+                </li>
+                <li class="list-item navbar-item favorites-item">
+                    <a href="./favorites.html" class="link-item">
+                        علاقه‌مندی‌ها
+                    </a>
+                </li>
+                <li class="list-item navbar-item about-us-item">
+                    <a href="./index.html#about-us" class="link-item">
+                        درباره ما
+                    </a>
+                </li>
+                <li class="list-item navbar-item contact-us-item">
+                    <a href="./index.html#contact-us" class="link-item">
+                        تماس با ما
+                    </a>
+                </li>
+
+                <!-- Mobile Auth Buttons -->
+                <li class="navbar-item mobile-auth">
+                    <div class="signin-signup">
+                        <button
+                            class="btn signup-btn"
+                            id="mobile-signup-btn"
+                            type="button"
+                        >
+                            ثبت نام
+                        </button>
+
+                        <button
+                            class="btn signin-btn"
+                            id="mobile-signin-btn"
+                            type="button"
+                        >
+                            ورود
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Desktop Actions -->
+            <div class="desktop-actions">
+
+                <!-- Theme Toggle Button -->
+                <button
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    type="button"
+                    aria-label="فعال‌کردن حالت تاریک"
+                    title="تغییر تم"
+                >
+                    <span id="theme-icon" aria-hidden="true">🌙</span>
+                </button>
+
+                <!-- Desktop Auth Buttons -->
+                <div class="signin-signup desktop-auth">
+
+                    <button
+                        class="btn signup-btn"
+                        id="desktop-signup-btn"
+                        type="button"
+                    >
+                        ثبت نام
+                    </button>
+
+                    <button
+                        class="btn signin-btn"
+                        id="desktop-signin-btn"
+                        type="button"
+                    >
+                        ورود
+                    </button>
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- Main Content -->
+    <main id="all-courses-page">
+
+        <!-- Page Introduction -->
+        <section class="all-courses-hero">
+            <h1>علاقه‌مندی‌های من</h1>
+
+            <p>
+                مسیر یادگیری برنامه‌نویسی رو از اینجا شروع کن.
+            </p>
+        </section>
+
+        <!-- Course Search and Filters -->
+        <section class="all-courses-content">
+
+            <!-- Course Filters -->
+            <div class="course-filters">
+
+                <div class="all-courses-search">
+                    <input
+                        type="search"
+                        id="course-search"
+                        placeholder="نام دوره موردنظرت رو جست‌وجو کن..."
+                        aria-label="جست‌وجو بین دوره‌ها"
+                    >
+                </div>
+
+                <!-- Course Sorting -->
+                <div class="course-sorting">
+                    <label for="course-sort">مرتب‌سازی:</label>
+
+                    <select id="course-sort">
+                        <option value="newest">جدیدترین دوره‌ها</option>
+                        <option value="oldest">قدیمی‌ترین دوره‌ها</option>
+                        <option value="beginner">سطح مقدماتی</option>
+                        <option value="intermediate">سطح متوسط</option>
+                        <option value="pro">سطح پیشرفته</option>
+                    </select>
+                </div>
+
+                <div class="course-categories">
+                    <button class="category-btn active" data-category="all">
+                        همه دوره‌ها
+                    </button>
+
+                    <button class="category-btn" data-category="HTML">
+                        HTML
+                    </button>
+
+                    <button class="category-btn" data-category="CSS">
+                        CSS
+                    </button>
+
+                    <button class="category-btn" data-category="JavaScript">
+                        JavaScript
+                    </button>
+                    <button class="category-btn" data-category="Python">
+                        Python
+                    </button>
+                    <button class="category-btn" data-category="Front-end">
+                        فرانت‌اند
+                    </button>
+                    <button class="category-btn" data-category="Framework">
+                        فریم‌ورک
+                    </button>
+                    <button class="category-btn" data-category="Programming">
+                        برنامه‌نویسی
+                    </button>
+                </div>
+
+                <button type="button" id="clear-filters" class="clear-filters-btn">
+                    پاک کردن فیلترها
+                </button>
+
+                <div class="courses-count">
+                    تعداد دوره‌ها: <span id="courses-count">0</span>
+                </div>
+
+            </div>
+
+            <section id="courses-section">
+
+                <!-- courses container -->
+                <div id="courses-container" class="courses-container"></div>
+
+                <!-- pagination container -->
+                <div id="pagination" class="pagination"></div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <!-- فوتر مشترک سایت را اینجا قرار می‌دهیم -->
+    </footer>
+
+    <script src="./js/script.js"></script>
+
+</body>
+</html>

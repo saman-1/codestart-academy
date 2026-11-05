@@ -421,6 +421,7 @@ passwordToggleButtons.forEach((button) => {
     });
 });
 
+
 // Search Box Toggle
 const searchToggle = document.querySelector("#search-toggle");
 const searchBox = document.querySelector("#search-box");
@@ -454,6 +455,13 @@ const coursesPerPage = 6;
 function filterCourses() {
     let filteredCourses = courses;
 
+    // Filter Favorite Courses
+    if (window.location.pathname.endsWith("favorites.html")) {
+        filteredCourses = filteredCourses.filter(course =>
+            favoriteCourses.includes(course.id)
+        );
+    }
+
     // Filter by category
     if (activeCategory !== "all") {
         filteredCourses = filteredCourses.filter(course =>
@@ -485,20 +493,29 @@ function filterCourses() {
 
         case "beginner":
             filteredCourses.sort((a, b) => {
-                return a.label === "مقدماتی" ? -1 : 1;
+                const aIsBeginner = a.label === "مقدماتی";
+                const bIsBeginner = b.label === "مقدماتی";
+
+                return Number(bIsBeginner) - Number(aIsBeginner);
             });
             break;
 
         case "intermediate":
             filteredCourses.sort((a, b) => {
-                return a.label === "متوسط" ? -1 : 1;
+                const aIsIntermediate = a.label === "متوسط";
+                const bIsIntermediate = b.label === "متوسط";
+
+                return Number(bIsIntermediate) - Number(aIsIntermediate);
             });
             break;
 
         case "pro":
             filteredCourses.sort((a, b) => {
-                return a.label === "پیشرفته" ? -1 : 1;
-            })
+                const aIsAdvanced = a.label === "پیشرفته";
+                const bIsAdvanced = b.label === "پیشرفته";
+
+                return Number(bIsAdvanced) - Number(aIsAdvanced);
+            });
             break;
     }
 
@@ -511,6 +528,7 @@ const courseSearch = document.querySelector("#course-search");
 if (courseSearch) {
     courseSearch.addEventListener("input", () => {
         searchValue = courseSearch.value.trim().toLowerCase();
+        currentPage = 1;
         filterCourses();
     });
 }
@@ -527,6 +545,7 @@ categoryButtons.forEach(button => {
         button.classList.add("active");
 
         activeCategory = button.dataset.category;
+        currentPage = 1;
 
         filterCourses();
     });
@@ -539,6 +558,7 @@ const courseSort = document.querySelector("#course-sort");
 if (courseSort) {
     courseSort.addEventListener("change", () => {
         activeSort = courseSort.value;
+        currentPage = 1;
         filterCourses();
     });
 }
@@ -551,6 +571,8 @@ if (clearFiltersButton) {
         activeCategory = "all";
         searchValue = "";
         activeSort = "newest";
+
+        currentPage = 1;
 
         const courseSearch = document.querySelector("#course-search");
         const courseSort = document.querySelector("#course-sort");
@@ -645,7 +667,7 @@ const courses = [
     {
         id: 8,
         title: "آموزش Git و GitHub",
-        categories: ["Git", "programming", "Github"],
+        categories: ["Git", "Programming", "Github"],
         image: "./images/courses-img/Git_Course.png",
         label: "مقدماتی",
         description: "مدیریت نسخه پروژه‌ها و کار تیمی با Git و GitHub.",
@@ -728,10 +750,23 @@ function renderCourses(courseList = courses) {
     if (courseList.length === 0) {
         coursesContainer.innerHTML = `
             <div class="no-courses-message">
-                <h3>دوره‌ای پیدا نشد!</h3>
-                <p>لطفاً عبارت جست‌وجو یا دسته‌بندی دیگری انتخاب کن.</p>
+                ${window.location.pathname.endsWith("favorites.html")
+                    ? `
+                        <h3>هنوز دوره‌ای به علاقه‌مندی‌ها اضافه نکرده‌ای!</h3>
+                        <p>با انتخاب علامت قلب روی دوره‌ها، آن‌ها را اینجا ذخیره کن.</p>
+                    `
+                    : `
+                        <h3>دوره‌ای پیدا نشد!</h3>
+                        <p>لطفاً عبارت جست‌وجو یا دسته‌بندی دیگری انتخاب کن.</p>
+                    `
+                }
             </div>
         `;
+        const pagination = document.querySelector("#pagination");
+
+        if (pagination) {
+            pagination.innerHTML = "";
+        }
         return;
     }
 
@@ -744,6 +779,23 @@ function renderCourses(courseList = courses) {
     coursesContainer.innerHTML = paginatedCourses.map(course => `
         <article class="card course-card">
             <div class="course-image">
+                <button
+                    type="button"
+                    class="favorite-btn"
+                    data-course-id="${course.id}"
+                    aria-label="افزودن به علاقه‌مندی‌ها"
+                    aria-pressed="false"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                    >
+                        <path
+                            d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"
+                        />
+                    </svg>
+                </button>
                 <div class="course-labels">
                     ${course.categories.map(category => `
                         <span class="course-label">${category}</span>
@@ -769,8 +821,62 @@ function renderCourses(courseList = courses) {
         </article>
     `).join("");
 
+    // Update Favorite Buttons
+    coursesContainer.querySelectorAll(".favorite-btn").forEach(button => {
+        const courseId = Number(button.dataset.courseId);
+        const isFavorite = favoriteCourses.includes(courseId);
+
+        button.classList.toggle("active", isFavorite);
+        button.setAttribute("aria-pressed", String(isFavorite));
+
+        button.setAttribute(
+            "aria-label",
+            isFavorite
+                ? "حذف از علاقه‌مندی‌ها"
+                : "افزودن به علاقه‌مندی‌ها"
+        );
+    });
+
     renderPagination(courseList);
 }
+
+// Favorite Courses
+let favoriteCourses = JSON.parse(
+    localStorage.getItem("favoriteCourses")
+) || [];
+document.addEventListener("click", (event) => {
+    const favoriteButton = event.target.closest(".favorite-btn");
+
+    if (!favoriteButton) return;
+
+    const courseId = Number(favoriteButton.dataset.courseId);
+
+    if (favoriteCourses.includes(courseId)) {
+        favoriteCourses = favoriteCourses.filter(id => id !== courseId);
+    } else {
+        favoriteCourses.push(courseId);
+    }
+
+    localStorage.setItem(
+        "favoriteCourses",
+        JSON.stringify(favoriteCourses)
+    );
+
+    favoriteButton.classList.toggle(
+        "active",
+        favoriteCourses.includes(courseId)
+    );
+
+    const isFavorite = favoriteCourses.includes(courseId);
+
+    favoriteButton.setAttribute("aria-pressed", String(isFavorite));
+    favoriteButton.setAttribute(
+        "aria-label",
+        isFavorite
+            ? "حذف از علاقه‌مندی‌ها"
+            : "افزودن به علاقه‌مندی‌ها"
+    );
+});
 
 function renderPagination(courseList) {
     const pagination = document.querySelector("#pagination");
@@ -828,8 +934,11 @@ function renderPagination(courseList) {
 }
 
 const isAllCoursesPage = document.querySelector("#all-courses-page");
+const isFavoritesPage = window.location.pathname.endsWith("favorites.html");
 
-if (isAllCoursesPage) {
+if (isFavoritesPage) {
+    filterCourses();
+} else if (isAllCoursesPage) {
     renderCourses();
 } else {
     renderCourses(courses.slice(-3).reverse());
