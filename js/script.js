@@ -813,7 +813,7 @@ function renderCourses(courseList = courses) {
 
                 <div class="course-footer">
                     <span class="course-level">${course.level}</span>
-                    <a href="${course.link}" class="course-link">
+                    <a href="./course-details.html?id=${course.id}" class="course-link">
                         مشاهده دوره ←
                     </a>
                 </div>
@@ -844,6 +844,16 @@ function renderCourses(courseList = courses) {
 let favoriteCourses = JSON.parse(
     localStorage.getItem("favoriteCourses")
 ) || [];
+
+// Update Favorite Count
+function updateFavoriteCount() {
+    const favoriteCount = document.querySelector("#favorite-count");
+
+    if (favoriteCount) {
+        favoriteCount.textContent = favoriteCourses.length;
+    }
+}
+
 document.addEventListener("click", (event) => {
     const favoriteButton = event.target.closest(".favorite-btn");
 
@@ -861,6 +871,8 @@ document.addEventListener("click", (event) => {
         "favoriteCourses",
         JSON.stringify(favoriteCourses)
     );
+
+    updateFavoriteCount();
 
     favoriteButton.classList.toggle(
         "active",
@@ -934,7 +946,66 @@ function renderPagination(courseList) {
 }
 
 const isAllCoursesPage = document.querySelector("#all-courses-page");
+
+updateFavoriteCount();
+
 const isFavoritesPage = window.location.pathname.endsWith("favorites.html");
+
+// Get Course ID from URL
+const urlParams = new URLSearchParams(window.location.search);
+const courseId = Number(urlParams.get("id"));
+
+// Find Selected Course
+const selectedCourse = courses.find(course => course.id === courseId);
+
+// Update Page Title
+if (selectedCourse) {
+    document.title = `${selectedCourse.title} | CodeStart Academy`;
+}
+
+// Get Course Details Container
+const courseDetailsContainer = document.querySelector("#course-details");
+
+// Render Course Details
+if (selectedCourse && courseDetailsContainer) {
+    courseDetailsContainer.innerHTML = `
+        <section class="course-details-content">
+            <img
+                src="${selectedCourse.image}"
+                alt="${selectedCourse.title}"
+                class="course-details-image"
+            >
+            <h1>${selectedCourse.title}</h1>
+
+            <div class="course-details-categories">
+                ${selectedCourse.categories.map(category => `
+                    <span class="course-category">${category}</span>
+                `).join("")}
+            </div>
+
+            <p>${selectedCourse.description}</p>
+
+            <span class="course-level">
+                ${selectedCourse.label}
+            </span>
+
+            <a href="./all_courses.html" class="btn course-back-btn">
+                بازگشت به همه دوره‌ها
+            </a>
+        </section>
+    `;
+}
+else if (courseDetailsContainer) {
+    courseDetailsContainer.innerHTML = `
+        <section class="course-details-content">
+            <h2>دوره موردنظر پیدا نشد!</h2>
+            <p>لطفاً از صفحه دوره‌ها، یک دوره معتبر انتخاب کن.</p>
+            <a href="./all_courses.html" class="btn">
+                مشاهده همه دوره‌ها
+            </a>
+        </section>
+    `;
+}
 
 if (isFavoritesPage) {
     filterCourses();

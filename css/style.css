@@ -91,6 +91,23 @@ body {
   width: 100%;
 }
 
+#favorite-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    margin-right: 5px;
+    border-radius: 50px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    vertical-align: middle;
+}
+
 .btn {
     display: inline-flex;
     justify-content: center;
@@ -2142,6 +2159,85 @@ body,
 
 [data-theme="dark"] .course-info-icon {
     background-color: #263550;
+}
+
+.course-details-content {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    background-color: var(--card-bg);
+    border-radius: 16px;
+}
+
+.course-details-image {
+    width: 100%;
+    max-width: 400px;
+    height: 240px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.course-details-content h1 {
+    color: var(--text-color);
+    font-size: 2rem;
+}
+
+.course-details-content p {
+    color: var(--text-color);
+    line-height: 2;
+}
+
+.course-details-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.course-details-categories .course-category {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.course-details-content .course-level {
+    display: inline-block;
+    padding: 7px 16px;
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    color: var(--primary-color);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.course-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 24px;
+    margin-top: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    background-color: transparent;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.course-back-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
 }
 
 
