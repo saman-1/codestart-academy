@@ -421,6 +421,21 @@ passwordToggleButtons.forEach((button) => {
     });
 });
 
+const togglePassword = document.getElementById("toggle-login-password");
+const passwordInput = document.getElementById("login-password");
+
+if (togglePassword && passwordInput) {
+    togglePassword.addEventListener("click", () => {
+        const isPassword = passwordInput.type === "password";
+
+        passwordInput.type = isPassword ? "text" : "password";
+        togglePassword.setAttribute(
+            "aria-label",
+            isPassword ? "مخفی کردن رمز عبور" : "نمایش رمز عبور"
+        );
+    });
+}
+
 
 // Search Box Toggle
 const searchToggle = document.querySelector("#search-toggle");
@@ -605,7 +620,7 @@ const courses = [
         duration: "۸ تا ۱۲ ساعت",
         prerequisites: "بدون پیش‌نیاز",
         project: "ساخت اولین صفحه وب",
-        link: "./html_course.html"
+        link: "#"
     },
     {
         id: 2,
@@ -618,7 +633,7 @@ const courses = [
         duration: "۱۰ تا ۱۵ ساعت",
         prerequisites: "آشنایی با HTML",
         project: "طراحی یک صفحه وب زیبا و واکنش‌گرا",
-        link: "./css_course.html"
+        link: "#"
     },
     {
         id: 3,
@@ -631,7 +646,7 @@ const courses = [
         duration: "۲۰ تا ۳۰ ساعت",
         prerequisites: "آشنایی با HTML و CSS",
         project: "ساخت یک اپلیکیشن تعاملی با JavaScript",
-        link: "./js_course.html"
+        link: "#"
     },
     {
         id: 4,
@@ -644,7 +659,7 @@ const courses = [
         duration: "۱۵ تا ۲۰ ساعت",
         prerequisites: "بدون پیش‌نیاز",
         project: "ساخت یک برنامه مدیریت اطلاعات با Python",
-        link: "./python_course.html"
+        link: "#"
     },
     {
         id: 5,
@@ -1054,6 +1069,24 @@ else if (courseDetailsContainer) {
         </section>
     `;
 }
+
+
+// auth logo changer
+const authLogo = document.getElementById("auth-logo");
+
+function updateAuthLogo() {
+    if (!authLogo) return;
+
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+
+    authLogo.src = isDark
+        ? "./images/logo-dark.png"
+        : "./images/logo-light.png";
+}
+
+updateAuthLogo();
+
+
 
 if (isFavoritesPage) {
     filterCourses();

@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ورود به حساب کاربری | CodeStart Academy</title>
+
+    <link rel="stylesheet" href="./css/fontiran.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <main id="login-page">
+
+        <section class="auth-container">
+
+            <div class="auth-card">
+
+                <!-- Logo -->
+                <a href="./index.html" class="auth-logo">
+                    <img
+                        src="./images/logo-light.png"
+                        alt="CodeStart Academy"
+                        id="auth-logo"
+                    >
+                </a>
+
+                <!-- Heading -->
+                <div class="auth-header">
+                    <h1>خوش برگشتی!</h1>
+                    <p>برای ورود به حساب کاربری خود اطلاعاتت رو وارد کن.</p>
+                </div>
+
+                <!-- Login Form -->
+                <form class="auth-form" id="login-form">
+
+                    <div class="form-group">
+                        <label for="login-email">ایمیل</label>
+                        <input
+                            type="email"
+                            id="login-email"
+                            name="email"
+                            placeholder="example@email.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">رمز عبور</label>
+
+                        <div class="password-wrapper">
+                            <input
+                                type="password"
+                                id="login-password"
+                                name="password"
+                                placeholder="رمز عبور خود را وارد کنید"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                id="toggle-login-password"
+                                aria-label="نمایش رمز عبور"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    width="20" height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#">رمز عبورت رو فراموش کردی؟</a>
+                    </div>
+
+                    <button type="submit" class="auth-submit-btn">
+                        ورود به حساب کاربری
+                    </button>
+
+                    <div class="auth-footer">
+                        <p>
+                            هنوز حساب کاربری نداری؟
+                            <a href="./register.html">ثبت‌نام کن</a>
+                        </p>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>
