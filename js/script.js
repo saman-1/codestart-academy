@@ -447,6 +447,8 @@ if (searchClose && searchBox) {
 let activeCategory = "all";
 let searchValue = "";
 let activeSort = "newest";
+let currentPage = 1;
+const coursesPerPage = 6;
 
 // Filter Courses
 function filterCourses() {
@@ -488,6 +490,12 @@ function filterCourses() {
             filteredCourses.sort((a, b) => {
                 return a.label === "متوسط" ? -1 : 1;
             });
+            break;
+
+        case "pro":
+            filteredCourses.sort((a, b) => {
+                return a.label === "پیشرفته" ? -1 : 1;
+            })
             break;
     }
 
@@ -600,6 +608,106 @@ const courses = [
         description: "با زبان Python برنامه‌نویسی رو یاد بگیر و اولین برنامه‌های خودت رو بساز.",
         level: "مناسب برای شروع",
         link: "./python_course.html"
+    },
+    {
+        id: 5,
+        title: "آموزش Bootstrap",
+        category: "Bootstrap",
+        image: "./images/courses-img/Bootstrap_Course.png",
+        label: "مقدماتی",
+        description: "با Bootstrap سریع‌تر و ساده‌تر صفحات واکنش‌گرا طراحی کن.",
+        level: "آشنایی با HTML و CSS",
+        link: "#"
+    },
+    {
+        id: 6,
+        title: "آموزش Tailwind CSS",
+        category: "Tailwind",
+        image: "./images/courses-img/Tailwind_Course.png",
+        label: "متوسط",
+        description: "با کلاس‌های کاربردی Tailwind رابط‌های کاربری مدرن بساز.",
+        level: "آشنایی با HTML و CSS",
+        link: "#"
+    },
+    {
+        id: 7,
+        title: "آموزش Python پیشرفته",
+        category: "Python",
+        image: "./images/courses-img/Python_Advanced.png",
+        label: "پیشرفته",
+        description: "مفاهیم پیشرفته پایتون را با تمرین‌های کاربردی یاد بگیر.",
+        level: "آشنایی با Python",
+        link: "#"
+    },
+    {
+        id: 8,
+        title: "آموزش Git و GitHub",
+        category: "Git",
+        image: "./images/courses-img/Git_Course.png",
+        label: "مقدماتی",
+        description: "مدیریت نسخه پروژه‌ها و کار تیمی با Git و GitHub.",
+        level: "مناسب برای شروع",
+        link: "#"
+    },
+    {
+        id: 9,
+        title: "آموزش React",
+        category: "React",
+        image: "./images/courses-img/React_Course.png",
+        label: "متوسط",
+        description: "با React رابط‌های کاربری پویا و کامپوننت‌محور بساز.",
+        level: "آشنایی با JavaScript",
+        link: "#"
+    },
+    {
+        id: 10,
+        title: "آموزش PHP",
+        category: "PHP",
+        image: "./images/courses-img/PHP_Course.png",
+        label: "مقدماتی",
+        description: "برنامه‌نویسی سمت سرور را با PHP شروع کن.",
+        level: "مناسب برای شروع",
+        link: "#"
+    },
+    {
+        id: 11,
+        title: "آموزش MySQL",
+        category: "MySQL",
+        image: "./images/courses-img/MySQL_Course.png",
+        label: "متوسط",
+        description: "ساخت و مدیریت پایگاه داده با MySQL را یاد بگیر.",
+        level: "آشنایی با SQL",
+        link: "#"
+    },
+    {
+        id: 12,
+        title: "آموزش طراحی UI/UX",
+        category: "UI/UX",
+        image: "./images/courses-img/UIUX_Course.png",
+        label: "مقدماتی",
+        description: "اصول طراحی تجربه و رابط کاربری را یاد بگیر.",
+        level: "مناسب برای شروع",
+        link: "#"
+    },
+    {
+        id: 13,
+        title: "آموزش Node.js",
+        category: "Node.js",
+        image: "./images/courses-img/NodeJS_Course.png",
+        label: "متوسط",
+        description: "با JavaScript در سمت سرور برنامه‌نویسی کن.",
+        level: "آشنایی با JavaScript",
+        link: "#"
+    },
+    {
+        id: 14,
+        title: "آموزش الگوریتم و ساختمان داده",
+        category: "Algorithm",
+        image: "./images/courses-img/Algorithm_Course.png",
+        label: "پیشرفته",
+        description: "مهارت حل مسئله و طراحی الگوریتم را تقویت کن.",
+        level: "آشنایی با برنامه‌نویسی",
+        link: "#"
     }
 ];
 
@@ -624,7 +732,13 @@ function renderCourses(courseList = courses) {
         return;
     }
 
-    coursesContainer.innerHTML = courseList.map(course => `
+    // Pagination
+    const startIndex = (currentPage - 1) * coursesPerPage;
+    const endIndex = startIndex + coursesPerPage;
+
+    const paginatedCourses = courseList.slice(startIndex, endIndex);
+
+    coursesContainer.innerHTML = paginatedCourses.map(course => `
         <article class="card course-card">
             <div class="course-image">
                 <span class="course-label">${course.label}</span>
@@ -647,8 +761,64 @@ function renderCourses(courseList = courses) {
             </div>
         </article>
     `).join("");
+
+    renderPagination(courseList);
 }
 
+function renderPagination(courseList) {
+    const pagination = document.querySelector("#pagination");
+
+    if (!pagination) return;
+
+    const totalPages = Math.ceil(courseList.length / coursesPerPage);
+
+    if (totalPages <= 1) {
+        pagination.innerHTML = "";
+        return;
+    }
+
+    pagination.innerHTML = Array.from(
+        { length: totalPages },
+        (_, index) => {
+            const page = index + 1;
+
+            return `
+                <button
+                    class="pagination-btn ${page === currentPage ? "active" : ""}"
+                    data-page="${page}"
+                >
+                    ${page}
+                </button>
+            `;
+        }
+    ).join("");
+
+    const paginationButtons = pagination.querySelectorAll(".pagination-btn");
+
+    paginationButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            currentPage = Number(button.dataset.page);
+            filterCourses();
+
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    const coursesSection = document.querySelector("#courses-section");
+
+                    if (!coursesSection) return;
+
+                    const topPosition =
+                        coursesSection.getBoundingClientRect().top +
+                        window.scrollY - 120;
+
+                    window.scrollTo({
+                        top: topPosition,
+                        behavior: "smooth"
+                    });
+                }, 150);
+            });
+        });
+    });
+}
 
 const isAllCoursesPage = document.querySelector("#all-courses-page");
 
