@@ -18,8 +18,136 @@
 
 <body>
 
-    <header>
-        <!-- Navbar -->
+    <!-- Header Section -->
+    <header id="home">
+
+        <!-- Navbar Section -->
+        <nav class="navbar">
+
+            <!-- Mobile Menu Toggle -->
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="باز کردن منو"
+                aria-expanded="false"
+                aria-controls="navbar-list"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Logo Section -->
+            <div class="logo">
+                <img src="./images/logo-light.png" alt="لوگوی وبسایت آموزشی کد استارت آکادمی" class="logo-image" id="site-logo">
+            </div>
+
+            <!-- Menu List -->
+            <ul class="navbar-list" id="navbar-list">
+                <li class="list-item navbar-item home-item">
+                    <a href="./index.html#home" class="link-item">
+                        صفحه اصلی
+                    </a>
+                </li>
+                <li class="list-item navbar-item features-item">
+                    <a href="./index.html#features" class="link-item">
+                        خدمات
+                    </a>
+                </li>
+                <li class="list-item navbar-item courses-item">
+                    <a href="./all_courses.html" class="link-item">
+                        دوره ها
+                    </a>
+                </li>
+                <li class="list-item navbar-item favorites-item">
+                    <a href="./favorites.html" class="link-item">
+                        علاقه‌مندی‌ها
+                        <span id="favorite-count">0</span>
+                    </a>
+                </li>
+                <li class="list-item navbar-item about-us-item">
+                    <a href="./index.html#about-us" class="link-item">
+                        درباره ما
+                    </a>
+                </li>
+                <li class="list-item navbar-item contact-us-item">
+                    <a href="./index.html#contact-us" class="link-item">
+                        تماس با ما
+                    </a>
+                </li>
+
+                <!-- Mobile Auth Buttons -->
+                <li class="navbar-item mobile-auth">
+                    <div class="signin-signup">
+                        <button
+                            class="btn signup-btn"
+                            id="mobile-signup-btn"
+                            type="button"
+                        >
+                            ثبت نام
+                        </button>
+
+                        <button
+                            class="btn signin-btn"
+                            id="mobile-signin-btn"
+                            type="button"
+                        >
+                            ورود
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Desktop Actions -->
+            <div class="desktop-actions">
+
+                <!-- Search Toggle Button -->
+                <button
+                    type="button"
+                    class="theme-toggle search-toggle"
+                    id="search-toggle"
+                    aria-label="باز کردن جست‌وجو"
+                    aria-expanded="false"
+                >
+                    🔍
+                </button>
+
+                <!-- Theme Toggle Button -->
+                <button
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    type="button"
+                    aria-label="فعال‌کردن حالت تاریک"
+                    title="تغییر تم"
+                >
+                    <span id="theme-icon" aria-hidden="true">🌙</span>
+                </button>
+
+                <!-- Desktop Auth Buttons -->
+                <div class="signin-signup desktop-auth">
+
+                    <button
+                        class="btn signup-btn"
+                        id="desktop-signup-btn"
+                        type="button"
+                    >
+                        ثبت نام
+                    </button>
+
+                    <button
+                        class="btn signin-btn"
+                        id="desktop-signin-btn"
+                        type="button"
+                    >
+                        ورود
+                    </button>
+                </div>
+
+            </div>
+
+        </nav>
+
     </header>
 
     <main id="course-details">
@@ -28,8 +156,28 @@
 
     </main>
 
-    <footer>
-        <!-- Footer -->
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">CodeStart Academy</a>
+                <p class="footer-description">
+                    یادگیری برنامه‌نویسی، قدم‌به‌قدم تا ساختن آینده‌ای بهتر.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="footer-heading">دسترسی سریع</h3>
+                <a href="./index.html#features">ویژگی‌ها</a>
+                <a href="./all_courses.html">دوره‌ها</a>
+                <a href="./index.html#about-us">درباره ما</a>
+                <a href="./index.html#contact-us">تماس با ما</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 CodeStart Academy. تمام حقوق محفوظ است.</p>
+        </div>
     </footer>
 
     <script src="./js/script.js"></script>
