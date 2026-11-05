@@ -2146,6 +2146,28 @@ body,
     border-color: var(--primary-color);
 }
 
+/* No Courses Message */
+.no-courses-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px 20px;
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--card-bg);
+}
+
+.no-courses-message h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.no-courses-message p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
 @media (max-width: 768px) {
     .all-courses-hero {
         padding: 3rem 1rem 1.5rem;

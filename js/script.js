@@ -421,7 +421,6 @@ passwordToggleButtons.forEach((button) => {
     });
 });
 
-
 // Search Box Toggle
 const searchToggle = document.querySelector("#search-toggle");
 const searchBox = document.querySelector("#search-box");
@@ -445,21 +444,56 @@ if (searchClose && searchBox) {
     });
 }
 
+let activeCategory = "all";
+let searchValue = "";
+
+// Filter Courses
+function filterCourses() {
+    let filteredCourses = courses;
+
+    // Filter by category
+    if (activeCategory !== "all") {
+        filteredCourses = filteredCourses.filter(course =>
+            course.category === activeCategory
+        );
+    }
+
+    // Filter by search
+    if (searchValue) {
+        filteredCourses = filteredCourses.filter(course =>
+            course.title.toLowerCase().includes(searchValue)
+        );
+    }
+
+    renderCourses(filteredCourses);
+}
+
+// Course Search
 const courseSearch = document.querySelector("#course-search");
 
 if (courseSearch) {
     courseSearch.addEventListener("input", () => {
-        const searchValue = courseSearch.value.trim().toLowerCase();
-
-        const filteredCourses = courses.filter(course =>
-            course.title.toLowerCase().includes(searchValue)
-        );
-
-        renderCourses(filteredCourses);
+        searchValue = courseSearch.value.trim().toLowerCase();
+        filterCourses();
     });
 }
 
+// Course Category Filter
+const categoryButtons = document.querySelectorAll(".category-btn");
 
+categoryButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        categoryButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        activeCategory = button.dataset.category;
+
+        filterCourses();
+    });
+});
 
 
 // Course Cards Data
@@ -511,6 +545,16 @@ function renderCourses(courseList = courses) {
 
     if (!coursesContainer) return;
 
+    if (courseList.length === 0) {
+        coursesContainer.innerHTML = `
+            <div class="no-courses-message">
+                <h3>دوره‌ای پیدا نشد!</h3>
+                <p>لطفاً عبارت جست‌وجو یا دسته‌بندی دیگری انتخاب کن.</p>
+            </div>
+        `;
+        return;
+    }
+
     coursesContainer.innerHTML = courseList.map(course => `
         <article class="card course-card">
             <div class="course-image">
@@ -536,31 +580,6 @@ function renderCourses(courseList = courses) {
     `).join("");
 }
 
-// Course Category Filter
-const categoryButtons = document.querySelectorAll(".category-btn");
-
-categoryButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        // Remove active class from all buttons
-        categoryButtons.forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-        // Add active class to clicked button
-        button.classList.add("active");
-
-        // Get selected category
-        const selectedCategory = button.dataset.category;
-
-        // Filter courses
-        const filteredCourses = selectedCategory === "all"
-            ? courses
-            : courses.filter(course => course.category === selectedCategory);
-
-        // Render filtered courses
-        renderCourses(filteredCourses);
-    });
-});
 
 const isAllCoursesPage = document.querySelector("#all-courses-page");
 
