@@ -2240,6 +2240,23 @@ body,
     transform: translateY(-2px);
 }
 
+.course-details-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.course-details-meta span {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 14px;
+}
+
 
 
 /* All Courses Page */

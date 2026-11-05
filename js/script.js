@@ -602,6 +602,9 @@ const courses = [
         label: "مقدماتی",
         description: "اولین قدم برای ساخت صفحات وب را بردار و وب‌سایت خودت را طراحی کن.",
         level: "مناسب برای شروع",
+        duration: "۸ تا ۱۲ ساعت",
+        prerequisites: "بدون پیش‌نیاز",
+        project: "ساخت اولین صفحه وب",
         link: "./html_course.html"
     },
     {
@@ -612,6 +615,9 @@ const courses = [
         label: "متوسط",
         description: "با CSS ظاهر صفحات وب را زیبا و حرفه‌ای طراحی کن.",
         level: "آشنایی با HTML",
+        duration: "۱۰ تا ۱۵ ساعت",
+        prerequisites: "آشنایی با HTML",
+        project: "طراحی یک صفحه وب زیبا و واکنش‌گرا",
         link: "./css_course.html"
     },
     {
@@ -622,6 +628,9 @@ const courses = [
         label: "متوسط",
         description: "با JavaScript به صفحات وب خودت تعامل و پویایی اضافه کن.",
         level: "آشنایی با HTML و CSS",
+        duration: "۲۰ تا ۳۰ ساعت",
+        prerequisites: "آشنایی با HTML و CSS",
+        project: "ساخت یک اپلیکیشن تعاملی با JavaScript",
         link: "./js_course.html"
     },
     {
@@ -632,6 +641,9 @@ const courses = [
         label: "مقدماتی",
         description: "با زبان Python برنامه‌نویسی رو یاد بگیر و اولین برنامه‌های خودت رو بساز.",
         level: "مناسب برای شروع",
+        duration: "۱۵ تا ۲۰ ساعت",
+        prerequisites: "بدون پیش‌نیاز",
+        project: "ساخت یک برنامه مدیریت اطلاعات با Python",
         link: "./python_course.html"
     },
     {
@@ -642,6 +654,9 @@ const courses = [
         label: "مقدماتی",
         description: "با Bootstrap سریع‌تر و ساده‌تر صفحات واکنش‌گرا طراحی کن.",
         level: "آشنایی با HTML و CSS",
+        duration: "۸ تا ۱۲ ساعت",
+        prerequisites: "آشنایی با HTML و CSS",
+        project: "طراحی یک وب‌سایت واکنش‌گرا با Bootstrap",
         link: "#"
     },
     {
@@ -652,6 +667,9 @@ const courses = [
         label: "متوسط",
         description: "با کلاس‌های کاربردی Tailwind رابط‌های کاربری مدرن بساز.",
         level: "آشنایی با HTML و CSS",
+        duration: "۱۰ تا ۱۵ ساعت",
+        prerequisites: "آشنایی با HTML و CSS",
+        project: "طراحی یک داشبورد مدرن با Tailwind CSS",
         link: "#"
     },
     {
@@ -662,6 +680,9 @@ const courses = [
         label: "پیشرفته",
         description: "مفاهیم پیشرفته پایتون را با تمرین‌های کاربردی یاد بگیر.",
         level: "آشنایی با Python",
+        duration: "۲۰ تا ۳۰ ساعت",
+        prerequisites: "آشنایی با مفاهیم پایه Python",
+        project: "ساخت یک سیستم مدیریت اطلاعات با Python",
         link: "#"
     },
     {
@@ -672,6 +693,9 @@ const courses = [
         label: "مقدماتی",
         description: "مدیریت نسخه پروژه‌ها و کار تیمی با Git و GitHub.",
         level: "مناسب برای شروع",
+        duration: "۶ تا ۱۰ ساعت",
+        prerequisites: "بدون پیش‌نیاز",
+        project: "مدیریت نسخه یک پروژه و انتشار آن در GitHub",
         link: "#"
     },
     {
@@ -682,6 +706,9 @@ const courses = [
         label: "متوسط",
         description: "با React رابط‌های کاربری پویا و کامپوننت‌محور بساز.",
         level: "آشنایی با JavaScript",
+        duration: "۲۰ تا ۳۰ ساعت",
+        prerequisites: "آشنایی با JavaScript و مفاهیم ES6",
+        project: "ساخت یک اپلیکیشن مدیریت وظایف با React",
         link: "#"
     },
     {
@@ -692,6 +719,9 @@ const courses = [
         label: "مقدماتی",
         description: "برنامه‌نویسی سمت سرور را با PHP شروع کن.",
         level: "مناسب برای شروع",
+        duration: "۱۵ تا ۲۰ ساعت",
+        prerequisites: "بدون پیش‌نیاز",
+        project: "ساخت یک فرم ثبت‌نام و ورود کاربران با PHP",
         link: "#"
     },
     {
@@ -702,6 +732,9 @@ const courses = [
         label: "متوسط",
         description: "ساخت و مدیریت پایگاه داده با MySQL را یاد بگیر.",
         level: "آشنایی با SQL",
+        duration: "۱۰ تا ۱۵ ساعت",
+        prerequisites: "آشنایی مقدماتی با مفاهیم پایگاه داده و SQL",
+        project: "طراحی و پیاده‌سازی پایگاه داده برای یک فروشگاه آنلاین",
         link: "#"
     },
     {
@@ -712,6 +745,9 @@ const courses = [
         label: "مقدماتی",
         description: "اصول طراحی تجربه و رابط کاربری را یاد بگیر.",
         level: "مناسب برای شروع",
+        duration: "۱۲ تا ۱۸ ساعت",
+        prerequisites: "بدون پیش‌نیاز",
+        project: "طراحی رابط کاربری یک اپلیکیشن موبایل در Figma",
         link: "#"
     },
     {
@@ -722,6 +758,9 @@ const courses = [
         label: "متوسط",
         description: "با JavaScript در سمت سرور برنامه‌نویسی کن.",
         level: "آشنایی با JavaScript",
+        duration: "۱۵ تا ۲۰ ساعت",
+        prerequisites: "آشنایی با JavaScript و مفاهیم پایه برنامه‌نویسی",
+        project: "ساخت یک API ساده برای مدیریت کاربران با Node.js",
         link: "#"
     },
     {
@@ -732,6 +771,9 @@ const courses = [
         label: "پیشرفته",
         description: "مهارت حل مسئله و طراحی الگوریتم را تقویت کن.",
         level: "آشنایی با برنامه‌نویسی",
+        duration: "۲۰ تا ۳۰ ساعت",
+        prerequisites: "آشنایی با مبانی برنامه‌نویسی",
+        project: "پیاده‌سازی الگوریتم‌های مرتب‌سازی و جست‌وجو",
         link: "#"
     }
 ];
@@ -984,6 +1026,12 @@ if (selectedCourse && courseDetailsContainer) {
             </div>
 
             <p>${selectedCourse.description}</p>
+
+            <div class="course-details-meta">
+                <span>⏱️ مدت یادگیری: ${selectedCourse.duration}</span>
+                <span>📚 پیش‌نیاز: ${selectedCourse.prerequisites}</span>
+                <span>🎯 پروژه پایانی: ${selectedCourse.project}</span>
+            </div>
 
             <span class="course-level">
                 ${selectedCourse.label}
