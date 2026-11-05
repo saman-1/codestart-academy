@@ -467,6 +467,7 @@ const courses = [
     {
         id: 1,
         title: "آموزش HTML",
+        category: "HTML",
         image: "./images/courses-img/HTML_Course.png",
         label: "مقدماتی",
         description: "اولین قدم برای ساخت صفحات وب را بردار و وب‌سایت خودت را طراحی کن.",
@@ -476,6 +477,7 @@ const courses = [
     {
         id: 2,
         title: "آموزش CSS",
+        category: "CSS",
         image: "./images/courses-img/CSS_Course.png",
         label: "مقدماتی",
         description: "با CSS ظاهر صفحات وب را زیبا و حرفه‌ای طراحی کن.",
@@ -485,6 +487,7 @@ const courses = [
     {
         id: 3,
         title: "آموزش JavaScript",
+        category: "JavaScript",
         image: "./images/courses-img/JS_Course.png",
         label: "متوسط",
         description: "با JavaScript به صفحات وب خودت تعامل و پویایی اضافه کن.",
@@ -494,6 +497,7 @@ const courses = [
     {
         id: 4,
         title: "آموزش Python",
+        category: "Python",
         image: "./images/courses-img/Python_Course.png",
         label: "مقدماتی",
         description: "با زبان Python برنامه‌نویسی رو یاد بگیر و اولین برنامه‌های خودت رو بساز.",
@@ -532,6 +536,31 @@ function renderCourses(courseList = courses) {
     `).join("");
 }
 
+// Course Category Filter
+const categoryButtons = document.querySelectorAll(".category-btn");
+
+categoryButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        // Remove active class from all buttons
+        categoryButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        // Add active class to clicked button
+        button.classList.add("active");
+
+        // Get selected category
+        const selectedCategory = button.dataset.category;
+
+        // Filter courses
+        const filteredCourses = selectedCategory === "all"
+            ? courses
+            : courses.filter(course => course.category === selectedCategory);
+
+        // Render filtered courses
+        renderCourses(filteredCourses);
+    });
+});
 
 const isAllCoursesPage = document.querySelector("#all-courses-page");
 
