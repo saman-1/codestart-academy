@@ -2170,7 +2170,25 @@ body,
     border-color: var(--primary-color);
 }
 
+.courses-count {
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
 
+.courses-count span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    margin-right: 6px;
+    padding: 0 8px;
+    border-radius: 50px;
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 700;
+}
 
 /* No Courses Message */
 .no-courses-message {

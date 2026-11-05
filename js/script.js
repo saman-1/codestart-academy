@@ -515,7 +515,7 @@ const courses = [
         image: "./images/courses-img/CSS_Course.png",
         label: "مقدماتی",
         description: "با CSS ظاهر صفحات وب را زیبا و حرفه‌ای طراحی کن.",
-        level: "مناسب برای شروع",
+        level: "آشنایی با HTML",
         link: "./css_course.html"
     },
     {
@@ -544,6 +544,12 @@ function renderCourses(courseList = courses) {
     const coursesContainer = document.querySelector("#courses-container");
 
     if (!coursesContainer) return;
+
+    const coursesCount = document.querySelector("#courses-count");
+
+    if (coursesCount) {
+        coursesCount.textContent = courseList.length;
+    }
 
     if (courseList.length === 0) {
         coursesContainer.innerHTML = `
