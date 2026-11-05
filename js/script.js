@@ -457,14 +457,17 @@ function filterCourses() {
     // Filter by category
     if (activeCategory !== "all") {
         filteredCourses = filteredCourses.filter(course =>
-            course.category === activeCategory
+            course.categories.includes(activeCategory)
         );
     }
 
     // Filter by search
     if (searchValue) {
         filteredCourses = filteredCourses.filter(course =>
-            course.title.toLowerCase().includes(searchValue)
+            course.title.toLowerCase().includes(searchValue) ||
+            course.categories.some(category =>
+                category.toLowerCase().includes(searchValue)
+            )
         );
     }
 
@@ -572,7 +575,7 @@ const courses = [
     {
         id: 1,
         title: "آموزش HTML",
-        category: "HTML",
+        categories: ["HTML", "Front-end"],
         image: "./images/courses-img/HTML_Course.png",
         label: "مقدماتی",
         description: "اولین قدم برای ساخت صفحات وب را بردار و وب‌سایت خودت را طراحی کن.",
@@ -582,7 +585,7 @@ const courses = [
     {
         id: 2,
         title: "آموزش CSS",
-        category: "CSS",
+        categories: ["CSS", "Front-end"],
         image: "./images/courses-img/CSS_Course.png",
         label: "متوسط",
         description: "با CSS ظاهر صفحات وب را زیبا و حرفه‌ای طراحی کن.",
@@ -592,7 +595,7 @@ const courses = [
     {
         id: 3,
         title: "آموزش JavaScript",
-        category: "JavaScript",
+        categories: ["JavaScript", "Programming", "Front-end"],
         image: "./images/courses-img/JS_Course.png",
         label: "متوسط",
         description: "با JavaScript به صفحات وب خودت تعامل و پویایی اضافه کن.",
@@ -602,7 +605,7 @@ const courses = [
     {
         id: 4,
         title: "آموزش Python",
-        category: "Python",
+        categories: ["Python", "Programming"],
         image: "./images/courses-img/Python_Course.png",
         label: "مقدماتی",
         description: "با زبان Python برنامه‌نویسی رو یاد بگیر و اولین برنامه‌های خودت رو بساز.",
@@ -612,7 +615,7 @@ const courses = [
     {
         id: 5,
         title: "آموزش Bootstrap",
-        category: "Bootstrap",
+        categories: ["CSS", "Framework", "Front-end"],
         image: "./images/courses-img/Bootstrap_Course.png",
         label: "مقدماتی",
         description: "با Bootstrap سریع‌تر و ساده‌تر صفحات واکنش‌گرا طراحی کن.",
@@ -622,7 +625,7 @@ const courses = [
     {
         id: 6,
         title: "آموزش Tailwind CSS",
-        category: "Tailwind",
+        categories: ["CSS", "Framework", "Front-end"],
         image: "./images/courses-img/Tailwind_Course.png",
         label: "متوسط",
         description: "با کلاس‌های کاربردی Tailwind رابط‌های کاربری مدرن بساز.",
@@ -632,7 +635,7 @@ const courses = [
     {
         id: 7,
         title: "آموزش Python پیشرفته",
-        category: "Python",
+        categories: ["Python", "Programming"],
         image: "./images/courses-img/Python_Advanced.png",
         label: "پیشرفته",
         description: "مفاهیم پیشرفته پایتون را با تمرین‌های کاربردی یاد بگیر.",
@@ -642,7 +645,7 @@ const courses = [
     {
         id: 8,
         title: "آموزش Git و GitHub",
-        category: "Git",
+        categories: ["Git", "programming", "Github"],
         image: "./images/courses-img/Git_Course.png",
         label: "مقدماتی",
         description: "مدیریت نسخه پروژه‌ها و کار تیمی با Git و GitHub.",
@@ -652,7 +655,7 @@ const courses = [
     {
         id: 9,
         title: "آموزش React",
-        category: "React",
+        categories: ["JavaScript", "Framework", "Front-end"],
         image: "./images/courses-img/React_Course.png",
         label: "متوسط",
         description: "با React رابط‌های کاربری پویا و کامپوننت‌محور بساز.",
@@ -662,7 +665,7 @@ const courses = [
     {
         id: 10,
         title: "آموزش PHP",
-        category: "PHP",
+        categories: ["PHP", "Programming"],
         image: "./images/courses-img/PHP_Course.png",
         label: "مقدماتی",
         description: "برنامه‌نویسی سمت سرور را با PHP شروع کن.",
@@ -672,7 +675,7 @@ const courses = [
     {
         id: 11,
         title: "آموزش MySQL",
-        category: "MySQL",
+        categories: ["SQL", "Back-end"],
         image: "./images/courses-img/MySQL_Course.png",
         label: "متوسط",
         description: "ساخت و مدیریت پایگاه داده با MySQL را یاد بگیر.",
@@ -682,7 +685,7 @@ const courses = [
     {
         id: 12,
         title: "آموزش طراحی UI/UX",
-        category: "UI/UX",
+        categories: ["Front-end"],
         image: "./images/courses-img/UIUX_Course.png",
         label: "مقدماتی",
         description: "اصول طراحی تجربه و رابط کاربری را یاد بگیر.",
@@ -692,7 +695,7 @@ const courses = [
     {
         id: 13,
         title: "آموزش Node.js",
-        category: "Node.js",
+        categories: ["JavaScript", "Framework", "Back-end"],
         image: "./images/courses-img/NodeJS_Course.png",
         label: "متوسط",
         description: "با JavaScript در سمت سرور برنامه‌نویسی کن.",
@@ -702,7 +705,7 @@ const courses = [
     {
         id: 14,
         title: "آموزش الگوریتم و ساختمان داده",
-        category: "Algorithm",
+        categories: ["Programming", "Algoritm"],
         image: "./images/courses-img/Algorithm_Course.png",
         label: "پیشرفته",
         description: "مهارت حل مسئله و طراحی الگوریتم را تقویت کن.",
@@ -741,7 +744,11 @@ function renderCourses(courseList = courses) {
     coursesContainer.innerHTML = paginatedCourses.map(course => `
         <article class="card course-card">
             <div class="course-image">
-                <span class="course-label">${course.label}</span>
+                <div class="course-labels">
+                    ${course.categories.map(category => `
+                        <span class="course-label">${category}</span>
+                    `).join("")}
+                </div>
                 <img src="${course.image}" alt="${course.title}">
             </div>
 
