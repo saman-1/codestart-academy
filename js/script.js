@@ -446,6 +446,7 @@ if (searchClose && searchBox) {
 
 let activeCategory = "all";
 let searchValue = "";
+let activeSort = "newest";
 
 // Filter Courses
 function filterCourses() {
@@ -463,6 +464,31 @@ function filterCourses() {
         filteredCourses = filteredCourses.filter(course =>
             course.title.toLowerCase().includes(searchValue)
         );
+    }
+
+    filteredCourses = [...filteredCourses];
+
+    // Sort Courses
+    switch (activeSort) {
+        case "newest":
+            filteredCourses.sort((a, b) => b.id - a.id);
+            break;
+
+        case "oldest":
+            filteredCourses.sort((a, b) => a.id - b.id);
+            break;
+
+        case "beginner":
+            filteredCourses.sort((a, b) => {
+                return a.label === "مقدماتی" ? -1 : 1;
+            });
+            break;
+
+        case "intermediate":
+            filteredCourses.sort((a, b) => {
+                return a.label === "متوسط" ? -1 : 1;
+            });
+            break;
     }
 
     renderCourses(filteredCourses);
@@ -496,6 +522,43 @@ categoryButtons.forEach(button => {
 });
 
 
+// Course Sorting
+const courseSort = document.querySelector("#course-sort");
+
+if (courseSort) {
+    courseSort.addEventListener("change", () => {
+        activeSort = courseSort.value;
+        filterCourses();
+    });
+}
+
+// Clear Filters
+const clearFiltersButton = document.querySelector("#clear-filters");
+
+if (clearFiltersButton) {
+    clearFiltersButton.addEventListener("click", () => {
+        activeCategory = "all";
+        searchValue = "";
+        activeSort = "newest";
+
+        const courseSearch = document.querySelector("#course-search");
+        const courseSort = document.querySelector("#course-sort");
+
+        if (courseSearch) courseSearch.value = "";
+        if (courseSort) courseSort.value = "newest";
+
+        categoryButtons.forEach(button => {
+            button.classList.toggle(
+                "active",
+                button.dataset.category === "all"
+            );
+        });
+
+        filterCourses();
+    });
+}
+
+
 // Course Cards Data
 const courses = [
     {
@@ -513,7 +576,7 @@ const courses = [
         title: "آموزش CSS",
         category: "CSS",
         image: "./images/courses-img/CSS_Course.png",
-        label: "مقدماتی",
+        label: "متوسط",
         description: "با CSS ظاهر صفحات وب را زیبا و حرفه‌ای طراحی کن.",
         level: "آشنایی با HTML",
         link: "./css_course.html"

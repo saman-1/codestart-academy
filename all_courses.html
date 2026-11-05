@@ -155,6 +155,18 @@
                     >
                 </div>
 
+                <!-- Course Sorting -->
+                <div class="course-sorting">
+                    <label for="course-sort">مرتب‌سازی:</label>
+
+                    <select id="course-sort">
+                        <option value="newest">جدیدترین دوره‌ها</option>
+                        <option value="oldest">قدیمی‌ترین دوره‌ها</option>
+                        <option value="beginner">سطح مقدماتی</option>
+                        <option value="intermediate">سطح متوسط</option>
+                    </select>
+                </div>
+
                 <div class="course-categories">
                     <button class="category-btn active" data-category="all">
                         همه دوره‌ها
@@ -175,6 +187,10 @@
                         Python
                     </button>
                 </div>
+
+                <button type="button" id="clear-filters" class="clear-filters-btn">
+                    پاک کردن فیلترها
+                </button>
 
                 <div class="courses-count">
                     تعداد دوره‌ها: <span id="courses-count">0</span>
