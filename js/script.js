@@ -460,6 +460,8 @@ if (courseSearch) {
 }
 
 
+
+
 // Course Cards Data
 const courses = [
     {

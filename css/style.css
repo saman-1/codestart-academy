@@ -1368,7 +1368,8 @@ body,
         display: flex;
     }
     .features-grid,
-    .courses-grid {
+    .courses-grid,
+    .courses-container {
         grid-template-columns: 1fr;
     }
     .features,
@@ -1451,11 +1452,9 @@ body,
   .courses-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .feature-card:last-child:nth-child(odd),
-  .course-card:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      justify-self: center;
-      width: calc(50% - var(--space-lg) / 2);
+  .courses-grid,
+  .courses-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .hero {
       gap: var(--space-md);
