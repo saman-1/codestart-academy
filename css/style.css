@@ -2524,7 +2524,7 @@ body,
 
 
 /* Login Page */
-#login-page {
+:is(#login-page, #register-page) {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -2534,13 +2534,13 @@ body,
     font-family: var(--font-page);
 }
 
-#login-page .auth-container {
+:is(#login-page, #register-page) .auth-container {
     width: 100%;
     max-width: 440px;
     margin: 0 auto;
 }
 
-#login-page .auth-card {
+:is(#login-page, #register-page) .auth-card {
     width: 100%;
     padding: 40px 32px;
     background-color: var(--card-color);
@@ -2549,7 +2549,7 @@ body,
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
 }
 
-#login-page .auth-logo img {
+:is(#login-page, #register-page) .auth-logo img {
     display: block;
     width: 180px;
     max-width: 100%;
@@ -2557,35 +2557,35 @@ body,
     margin: 0 auto;
 }
 
-#login-page .auth-logo {
+:is(#login-page, #register-page) .auth-logo {
     display: block;
     width: fit-content;
     margin: 0 auto 32px;
 }
 
-#login-page .auth-header {
+:is(#login-page, #register-page) .auth-header {
     text-align: center;
     margin-bottom: 28px;
 }
 
-#login-page .auth-header h1 {
+:is(#login-page, #register-page) .auth-header h1 {
     font-size: 24px;
     font-weight: 700;
     color: var(--text-color);
     margin-bottom: 10px;
 }
 
-#login-page .auth-header p {
+:is(#login-page, #register-page) .auth-header p {
     font-size: 14px;
     line-height: 1.8;
     color: var(--muted-text-color);
 }
 
-#login-page .form-group {
+:is(#login-page, #register-page) .form-group {
     margin-bottom: 20px;
 }
 
-#login-page .form-group label {
+:is(#login-page, #register-page) .form-group label {
     display: block;
     margin-bottom: 8px;
     font-size: 14px;
@@ -2593,7 +2593,7 @@ body,
     color: var(--text-color);
 }
 
-#login-page .form-group input {
+:is(#login-page, #register-page) .form-group input {
     width: 100%;
     padding: 13px 14px;
     border: 1px solid var(--border-color);
@@ -2606,12 +2606,12 @@ body,
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-#login-page .form-group input:focus {
+:is(#login-page, #register-page) .form-group input:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-#login-page .auth-submit-btn {
+:is(#login-page, #register-page) .auth-submit-btn {
     width: 100%;
     padding: 14px;
     border: none;
@@ -2626,62 +2626,62 @@ body,
     transition: all 0.25s ease;
 }
 
-#login-page .auth-submit-btn:hover {
+:is(#login-page, #register-page) .auth-submit-btn:hover {
     background: linear-gradient(135deg, #1d4ed8, #1e40af);
     box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
     transform: translateY(-2px);
 }
 
-#login-page .forgot-password {
+:is(#login-page, #register-page) .forgot-password {
     text-align: left;
     margin-bottom: 20px;
 }
 
-#login-page .forgot-password a {
+:is(#login-page, #register-page) .forgot-password a {
     color: var(--primary-color);
     font-size: 13px;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
-#login-page .forgot-password a:hover {
+:is(#login-page, #register-page) .forgot-password a:hover {
     color: var(--primary-dark);
     text-decoration: underline;
 }
 
-#login-page .auth-footer {
+:is(#login-page, #register-page) .auth-footer {
     margin-top: 24px;
     padding-top: 20px;
     border-top: 1px solid var(--border-color);
     text-align: center;
 }
 
-#login-page .auth-footer p {
+:is(#login-page, #register-page) .auth-footer p {
     color: var(--muted-text-color);
     font-size: 13px;
 }
 
-#login-page .auth-footer a {
+:is(#login-page, #register-page) .auth-footer a {
     color: var(--primary-color);
     font-weight: 600;
     text-decoration: none;
     margin-right: 4px;
 }
 
-#login-page .auth-footer a:hover {
+:is(#login-page, #register-page) .auth-footer a:hover {
     color: var(--primary-dark);
     text-decoration: underline;
 }
 
-#login-page .password-wrapper {
+:is(#login-page, #register-page) .password-wrapper {
     position: relative;
 }
 
-#login-page .password-wrapper input {
+:is(#login-page, #register-page) .password-wrapper input {
     padding-left: 48px;
 }
 
-#login-page .toggle-password {
+:is(#login-page, #register-page) .toggle-password {
     position: absolute;
     left: 12px;
     top: 50%;
@@ -2693,6 +2693,6 @@ body,
     font-size: 16px;
 }
 
-[data-theme="dark"] #login-page .auth-card {
+[data-theme="dark"] :is(#login-page, #register-page) .auth-card {
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
 }

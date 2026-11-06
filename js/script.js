@@ -436,6 +436,53 @@ if (togglePassword && passwordInput) {
     });
 }
 
+const toggleRegisterPassword = document.getElementById("toggle-register-password");
+const registerPassword = document.getElementById("register-password");
+
+if (toggleRegisterPassword && registerPassword) {
+    toggleRegisterPassword.addEventListener("click", () => {
+        const isPassword = registerPassword.type === "password";
+
+        registerPassword.type = isPassword ? "text" : "password";
+
+        toggleRegisterPassword.setAttribute(
+            "aria-label",
+            isPassword ? "مخفی کردن رمز عبور" : "نمایش رمز عبور"
+        );
+    });
+}
+
+const toggleConfirmPassword = document.getElementById("toggle-confirm-password");
+const confirmPassword = document.getElementById("register-confirm-password");
+
+if (toggleConfirmPassword && confirmPassword) {
+    toggleConfirmPassword.addEventListener("click", () => {
+        const isPassword = confirmPassword.type === "password";
+
+        confirmPassword.type = isPassword ? "text" : "password";
+
+        toggleConfirmPassword.setAttribute(
+            "aria-label",
+            isPassword ? "مخفی کردن رمز عبور" : "نمایش رمز عبور"
+        );
+    });
+}
+
+// check password confirm
+const registerForm = document.getElementById("register-form");
+
+if (registerForm) {
+    registerForm.addEventListener("submit", (event) => {
+        const password = document.getElementById("register-password").value;
+        const confirmPassword = document.getElementById("register-confirm-password").value;
+
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            alert("رمز عبور و تکرار آن یکسان نیستند.");
+        }
+    });
+}
+
 
 // Search Box Toggle
 const searchToggle = document.querySelector("#search-toggle");
