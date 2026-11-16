@@ -1,4 +1,5 @@
 
+const db = require("./config/db");
 const express = require("express");
 const healthRoutes = require("./routes/healthRoutes");
 const userRoutes = require("./routes/userRoutes");
