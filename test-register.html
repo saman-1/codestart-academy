@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تست ثبت‌نام کاربران</title>
+</head>
+<body>
+
+    <h1>فرم ثبت‌نام آزمایشی</h1>
+
+    <form id="registerForm">
+        <label for="name">نام:</label>
+        <input type="text" id="name">
+
+        <br><br>
+
+        <label for="email">ایمیل:</label>
+        <input type="text" id="email">
+
+        <br><br>
+
+        <label for="password">رمز عبور:</label>
+        <input type="password" id="password">
+
+        <br><br>
+
+        <button type="submit">ثبت‌نام</button>
+    </form>
+
+    <p id="result"></p>
+
+
+    <script>
+        const registerForm = document.getElementById("registerForm");
+
+        registerForm.addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const userData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value
+            };
+
+            try {
+                const response = await fetch("http://localhost:3000/api/users/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || "خطا در ارسال اطلاعات");
+                }
+
+                document.getElementById("result").textContent =
+                    JSON.stringify(result.user, null, 2);
+
+            } catch (error) {
+                document.getElementById("result").textContent =
+                    "خطا: " + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
