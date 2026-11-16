@@ -7,6 +7,14 @@ const cors = require("cors");
 
 const app = express();
 
+db.query("SELECT 1")
+    .then(() => {
+        console.log("MySQL connected successfully!");
+    })
+    .catch((err) => {
+        console.error("Database connection failed:", err.message);
+    });
+
 app.use(cors());
 
 app.use(express.json());
