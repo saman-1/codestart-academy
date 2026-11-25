@@ -5,6 +5,7 @@ const db = require("../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const authMiddleware = require("../middleware/authMiddleware");
+const roleMiddleware = require("../middleware/roleMiddleware");
 
 const router = express.Router();
 
@@ -156,5 +157,31 @@ router.get("/profile", authMiddleware, (req, res) => {
         user: req.user
     });
 });
+
+router.get(
+    "/teacher-panel",
+    authMiddleware,
+    roleMiddleware("teacher"),
+    (req, res) => {
+        return res.status(200).json({
+            status: "success",
+            message: "به پنل معلم خوش آمدید!",
+            user: req.user
+        });
+    }
+);
+
+router.get(
+    "/founder-panel",
+    authMiddleware,
+    roleMiddleware("founder"),
+    (req, res) => {
+        return res.status(200).json({
+            status: "success",
+            message: "به پنل مدیریت بنیان‌گذار خوش آمدید!",
+            user: req.user
+        });
+    }
+);
 
 module.exports = router;
