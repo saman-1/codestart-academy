@@ -4,6 +4,7 @@ const express = require("express");
 const healthRoutes = require("./routes/healthRoutes");
 const userRoutes = require("./routes/userRoutes");
 const cors = require("cors");
+const courseRoutes = require("./routes/courseRoutes");
 
 if (!process.env.JWT_SECRET) {
     throw new Error("JWT_SECRET is not defined in .env");
@@ -31,6 +32,8 @@ app.use((req, res, next) => {
 
 app.use("/api", healthRoutes);
 app.use("/api/users", userRoutes);
+
+app.use("/api/courses", courseRoutes);
 
 const PORT = 3000;
 
