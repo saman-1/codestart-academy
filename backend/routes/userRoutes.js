@@ -184,4 +184,217 @@ router.get(
     }
 );
 
+// get users list
+router.get(
+    "/",
+    authMiddleware,
+    roleMiddleware("founder"),
+    async (req, res) => {
+        try {
+            const sql = `
+                SELECT id, name, email, role, created_at
+                FROM users
+                ORDER BY created_at DESC
+            `;
+
+            const [users] = await db.query(sql);
+
+            return res.status(200).json({
+                status: "success",
+                message: "فهرست کاربران با موفقیت دریافت شد.",
+                count: users.length,
+                users
+            });
+
+        } catch (error) {
+            console.error("Get users error:", error.message);
+
+            return res.status(500).json({
+                status: "error",
+                message: "خطایی هنگام دریافت فهرست کاربران رخ داد."
+            });
+        }
+    }
+);
+
+// get user info
+router.get(
+    "/:id",
+    authMiddleware,
+    roleMiddleware("founder"),
+    async (req, res) => {
+        try {
+            const userId = req.params.id;
+
+            const sql = `
+                SELECT id, name, email, role, created_at
+                FROM users
+                WHERE id = ?
+            `;
+
+            const [users] = await db.query(sql, [userId]);
+
+            if (users.length === 0) {
+                return res.status(404).json({
+                    status: "error",
+                    message: "کاربر موردنظر پیدا نشد."
+                });
+            }
+
+            return res.status(200).json({
+                status: "success",
+                message: "اطلاعات کاربر با موفقیت دریافت شد.",
+                user: users[0]
+            });
+
+        } catch (error) {
+            console.error("Get user error:", error.message);
+
+            return res.status(500).json({
+                status: "error",
+                message: "خطایی هنگام دریافت اطلاعات کاربر رخ داد."
+            });
+        }
+    }
+);
+
+// Edit users
+router.put(
+    "/:id",
+    authMiddleware,
+    roleMiddleware("founder"),
+    async (req, res) => {
+        try {
+            const userId = req.params.id;
+            const name = req.body.name?.trim();
+            const email = req.body.email?.trim();
+
+            if (!name || !email) {
+                return res.status(400).json({
+                    status: "error",
+                    message: "نام و ایمیل الزامی هستند!"
+                });
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                return res.status(400).json({
+                    status: "error",
+                    message: "لطفاً یک ایمیل معتبر وارد کنید!"
+                });
+            }
+
+            const sql = `
+                UPDATE users
+                SET name = ?, email = ?
+                WHERE id = ?
+            `;
+
+            const [result] = await db.query(sql, [
+                name,
+                email,
+                userId
+            ]);
+
+            if (result.affectedRows === 0) {
+                return res.status(404).json({
+                    status: "error",
+                    message: "کاربر موردنظر پیدا نشد."
+                });
+            }
+
+            return res.status(200).json({
+                status: "success",
+                message: "اطلاعات کاربر با موفقیت ویرایش شد."
+            });
+
+        } catch (error) {
+            if (error.code === "ER_DUP_ENTRY") {
+                return res.status(409).json({
+                    status: "error",
+                    message: "این ایمیل قبلاً توسط کاربر دیگری ثبت شده است."
+                });
+            }
+
+            console.error("Update user error:", error.message);
+
+            return res.status(500).json({
+                status: "error",
+                message: "خطایی هنگام ویرایش اطلاعات کاربر رخ داد."
+            });
+        }
+    }
+);
+
+// delete user
+router.delete(
+    "/:id",
+    authMiddleware,
+    roleMiddleware("founder"),
+    async (req, res) => {
+        try {
+            const userId = req.params.id;
+
+            // do not let founder delete his account
+            if (Number(userId) === Number(req.user.id)) {
+                return res.status(403).json({
+                    status: "error",
+                    message: "شما اجازه حذف حساب کاربری خودتان را ندارید."
+                });
+            }
+
+            // do not let delete last founder
+            const [users] = await db.query(
+                "SELECT role FROM users WHERE id = ?",
+                [userId]
+            );
+
+            if (users.length === 0) {
+                return res.status(404).json({
+                    status: "error",
+                    message: "کاربر موردنظر پیدا نشد."
+                });
+            }
+
+            if (users[0].role === "founder") {
+                const [founders] = await db.query(
+                    "SELECT COUNT(*) AS total FROM users WHERE role = 'founder'"
+                );
+
+                if (founders[0].total <= 1) {
+                    return res.status(403).json({
+                        status: "error",
+                        message: "حذف آخرین حساب Founder مجاز نیست."
+                    });
+                }
+            }
+
+            const sql = "DELETE FROM users WHERE id = ?";
+
+            const [result] = await db.query(sql, [userId]);
+
+            if (result.affectedRows === 0) {
+                return res.status(404).json({
+                    status: "error",
+                    message: "کاربر موردنظر پیدا نشد."
+                });
+            }
+
+            return res.status(200).json({
+                status: "success",
+                message: "کاربر با موفقیت حذف شد."
+            });
+
+        } catch (error) {
+            console.error("Delete user error:", error.message);
+
+            return res.status(500).json({
+                status: "error",
+                message: "خطایی هنگام حذف کاربر رخ داد."
+            });
+        }
+    }
+);
+
 module.exports = router;
