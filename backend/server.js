@@ -5,6 +5,10 @@ const healthRoutes = require("./routes/healthRoutes");
 const userRoutes = require("./routes/userRoutes");
 const cors = require("cors");
 
+if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET is not defined in .env");
+}
+
 const app = express();
 
 db.query("SELECT 1")
