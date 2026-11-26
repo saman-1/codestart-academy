@@ -13,9 +13,24 @@ router.post("/register", async (req, res) => {
     
     try {
 
-        const name = req.body.name?.trim();
-        const email = req.body.email?.trim();
-        const password = req.body.password;
+        
+        const body = req.body ?? {};
+
+        if (
+            typeof body.name !== "string" ||
+            typeof body.email !== "string" ||
+            typeof body.password !== "string"
+        ) {
+            return res.status(400).json({
+                status: "error",
+                message: "اطلاعات ورودی معتبر نیستند!"
+            });
+        }
+
+        const name = body.name.trim();
+        const email = body.email.trim();
+        const password = body.password;
+
 
         // empty fields
         if (!name || !email || !password) {
@@ -82,8 +97,22 @@ router.post("/login", async (req, res) => {
 
     try {
 
-        const email = req.body.email?.trim();
-        const password = req.body.password;
+        
+        const body = req.body ?? {};
+
+        if (
+            typeof body.email !== "string" ||
+            typeof body.password !== "string"
+        ) {
+            return res.status(400).json({
+                status: "error",
+                message: "ایمیل یا رمز عبور معتبر نیست!"
+            });
+        }
+
+        const email = body.email.trim();
+        const password = body.password;
+
 
         if (!email || !password) {
             return res.status(400).json({
@@ -265,9 +294,24 @@ router.put(
     roleMiddleware("founder"),
     async (req, res) => {
         try {
+
+            const body = req.body ?? {};
+
+            if (
+                typeof body.name !== "string" ||
+                typeof body.email !== "string"
+            ) {
+                return res.status(400).json({
+                    status: "error",
+                    message: "نام یا ایمیل معتبر نیست!"
+                });
+            }
+
+            
             const userId = req.params.id;
-            const name = req.body.name?.trim();
-            const email = req.body.email?.trim();
+            const name = body.name.trim();
+            const email = body.email.trim();
+
 
             if (!name || !email) {
                 return res.status(400).json({

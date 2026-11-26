@@ -12,13 +12,31 @@ if (!process.env.JWT_SECRET) {
 
 const app = express();
 
-db.query("SELECT 1")
-    .then(() => {
+// db.query("SELECT 1")
+//     .then(() => {
+//         console.log("MySQL connected successfully!");
+//     })
+//     .catch((err) => {
+//         console.error("Database connection failed:", err.message);
+//     });
+
+const startServer = async () => {
+    try {
+        await db.query("SELECT 1");
+
         console.log("MySQL connected successfully!");
-    })
-    .catch((err) => {
-        console.error("Database connection failed:", err.message);
-    });
+
+        app.listen(PORT, () => {
+            console.log(`Server is running on http://localhost:${PORT}`);
+        });
+
+    } catch (error) {
+        console.error("Database connection failed:", error.message);
+        process.exit(1);
+    }
+};
+
+startServer();
 
 app.use(cors());
 
@@ -41,14 +59,14 @@ app.get("/", (req, res) => {
     res.send("Welcome to CodeStart Academy - Version 2!");
 });
 
-app.get("/api/health", (req, res) => {
-    res.json({
-        status: "success",
-        message: "CodeStart Academy Backend is running!",
-        timestamp: new Date()
-    });
-});
+// app.get("/api/health", (req, res) => {
+//     res.json({
+//         status: "success",
+//         message: "CodeStart Academy Backend is running!",
+//         timestamp: new Date()
+//     });
+// });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+// });
